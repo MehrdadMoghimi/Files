@@ -123,7 +123,7 @@ class Backtest:
             uc = -2 * (uc_h0 - uc_h1)
 
             # Independence
-            ind_h0 = (n00 + n01) * np.log(1 - p) + (n01 + n11) * np.log(p)
+            ind_h0 = (n00 + n10) * np.log(1 - p) + (n01 + n11) * np.log(p)
             ind_h1 = n00 * np.log(1 - p01) + n01 * np.log(p01) + n10 * np.log(1 - p11)
             if p11 > 0:
                 ind_h1 += n11 * np.log(p11)
