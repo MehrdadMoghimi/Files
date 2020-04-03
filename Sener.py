@@ -55,9 +55,9 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
     test_len = portfolio_returns.shape[0] - window_length
     forecast_std_arch = np.zeros(test_len)
     forecast_mean_arch = np.zeros(test_len)
+    print('\n' + volatility_model)
     if volatility_model == 'GJR-GARCH':
         for j in range(0, test_len):
-            print(volatility_model)
             progressBar(j, test_len, bar_length=20)
             window = portfolio_returns[j:j + window_length]
             arch = arch_model(window, p=1, o=1, q=1)
@@ -67,7 +67,6 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
             forecast_std_arch[j] = np.sqrt(arch_forecast.variance.iloc[-1, 0])
     elif volatility_model == 'TARCH':
         for j in range(0, test_len):
-            print(volatility_model)
             progressBar(j, test_len, bar_length=20)
             window = portfolio_returns[j:j + window_length]
             arch = arch_model(window, p=1, o=1, q=1, power=1.0)
@@ -77,7 +76,6 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
             forecast_std_arch[j] = np.sqrt(arch_forecast.variance.iloc[-1, 0])
     else:
         for j in range(0, test_len):
-            print(volatility_model)
             progressBar(j, test_len, bar_length=20)
             window = portfolio_returns[j:j + window_length]
             arch = arch_model(window, mean='AR', dist=dist, vol=volatility_model, p=1, q=1)
@@ -94,8 +92,8 @@ def forecast_mean(portfolio_returns, window_length):
     portfolio_returns = portfolio_returns * 1000
     test_len = portfolio_returns.shape[0] - window_length
     forecast = np.zeros(test_len)
+    print('\nforecast_mean')
     for j in range(0, test_len):
-        print('forecast_mean')
         progressBar(j, test_len, bar_length=20)
         window = portfolio_returns[j:j + window_length]
         arima = ARIMA(window, order=(1, 1, 1))
@@ -109,7 +107,9 @@ def forecast_mean(portfolio_returns, window_length):
 def calculate_Var_Covar_VAR(portfolio_returns, window_length, alpha):
     test_len = portfolio_returns.shape[0] - window_length
     forecast_std_n = np.zeros(test_len)
+    print('\nVar Covar:')
     for j in range(0, test_len):
+        progressBar(j, test_len, bar_length=20)
         window = portfolio_returns[j:j + window_length]
         forecast_std_n[j] = np.std(window)
     std_VaR = norm.ppf(alpha / 100.0) * forecast_std_n
@@ -120,7 +120,9 @@ def calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha):
     forecast_std_risk_metric = np.zeros(portfolio_returns.shape[0])
     forecast_std_risk_metric[0] = portfolio_returns[0]
     lambda_risk_metric = 0.94
+    print('\nRisk Metrics:')
     for i in range(1, portfolio_returns.shape[0]):
+        progressBar(i, portfolio_returns.shape[0], bar_length=20)
         forecast_std_risk_metric[i] = np.sqrt((1-lambda_risk_metric)*portfolio_returns[i]**2 + lambda_risk_metric*forecast_std_risk_metric[i-1]**2)
     forecast_std_test = forecast_std_risk_metric[window_length:]
     risk_metric_VaR = norm.ppf(alpha / 100.0) * forecast_std_test
@@ -172,7 +174,9 @@ def calculate_GJR_GARCH_VAR(portfolio_returns, window_length, alpha):
 def calculate_Historical_VAR(portfolio_returns, window_length, alpha):
     test_len = portfolio_returns.shape[0] - window_length
     hist_VaR = np.zeros((test_len, 1))
+    print('\nHistorical:')
     for j in range(test_len):
+        progressBar(j, test_len, bar_length=20)
         window = portfolio_returns[j:j + window_length]
         hist_VaR[j] = np.percentile(window, alpha)
     return hist_VaR
@@ -187,7 +191,7 @@ def calculate_MonteCarlo_VAR(portfolio_returns, window_length, alpha):
     MEAN = (forecast_mean_arima / 100.0).reshape((-1, 1))
     raw_samples = np.random.normal(0, 1, size=(1, n_samples))
     samples_with_scale = np.repeat(MEAN, n_samples, axis=1) + np.dot(STD, raw_samples)
-    mc_VaR = np.percentile(samples_with_scale, q=alpha, axis=1)
+    mc_VaR = np.percentile(samples_with_scale, q=alpha, axis=1).reshape(-1,1)
     return mc_VaR
 
 
