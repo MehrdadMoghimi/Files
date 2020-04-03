@@ -55,7 +55,7 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
     test_len = portfolio_returns.shape[0] - window_length
     forecast_std_arch = np.zeros(test_len)
     forecast_mean_arch = np.zeros(test_len)
-    print('\n' + volatility_model)
+    print('\n' + volatility_model + ':')
     if volatility_model == 'GJR-GARCH':
         for j in range(0, test_len):
             progressBar(j, test_len, bar_length=20)
@@ -92,7 +92,7 @@ def forecast_mean(portfolio_returns, window_length):
     portfolio_returns = portfolio_returns * 1000
     test_len = portfolio_returns.shape[0] - window_length
     forecast = np.zeros(test_len)
-    print('\nforecast_mean')
+    print('\nforecast_mean:')
     for j in range(0, test_len):
         progressBar(j, test_len, bar_length=20)
         window = portfolio_returns[j:j + window_length]
