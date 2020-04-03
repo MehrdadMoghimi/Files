@@ -7,6 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from numpy.random import seed
+import sys
 
 
 def safe_space_PM(returns, VARs):
@@ -56,7 +57,8 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
     forecast_mean_arch = np.zeros(test_len)
     if volatility_model == 'GJR-GARCH':
         for j in range(0, test_len):
-            print(j)
+            print(volatility_model)
+            progressBar(j, test_len, bar_length=20)
             window = portfolio_returns[j:j + window_length]
             arch = arch_model(window, p=1, o=1, q=1)
             arch_fit = arch.fit(disp="off")
@@ -65,7 +67,8 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
             forecast_std_arch[j] = np.sqrt(arch_forecast.variance.iloc[-1, 0])
     elif volatility_model == 'TARCH':
         for j in range(0, test_len):
-            print(j)
+            print(volatility_model)
+            progressBar(j, test_len, bar_length=20)
             window = portfolio_returns[j:j + window_length]
             arch = arch_model(window, p=1, o=1, q=1, power=1.0)
             arch_fit = arch.fit(disp="off")
@@ -74,7 +77,8 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
             forecast_std_arch[j] = np.sqrt(arch_forecast.variance.iloc[-1, 0])
     else:
         for j in range(0, test_len):
-            print(j)
+            print(volatility_model)
+            progressBar(j, test_len, bar_length=20)
             window = portfolio_returns[j:j + window_length]
             arch = arch_model(window, mean='AR', dist=dist, vol=volatility_model, p=1, q=1)
             arch_fit = arch.fit(disp="off")
@@ -91,7 +95,8 @@ def forecast_mean(portfolio_returns, window_length):
     test_len = portfolio_returns.shape[0] - window_length
     forecast = np.zeros(test_len)
     for j in range(0, test_len):
-        print(j)
+        print('forecast_mean')
+        progressBar(j, test_len, bar_length=20)
         window = portfolio_returns[j:j + window_length]
         arima = ARIMA(window, order=(1, 1, 1))
         arima_fit = arima.fit(disp=0)
@@ -323,7 +328,13 @@ def plot(returns, VARs, file_name=None):
     plt.close("all")
 
 
+def progressBar(value, end_value, bar_length=20):
+    percent = float(value) / end_value
+    arrow = '-' * int(round(percent * bar_length)-1) + '>'
+    spaces = ' ' * (bar_length - len(arrow))
 
+    sys.stdout.write("\rCompleted: [{0}] {1}%".format(arrow + spaces, int(round(percent * 100))))
+    sys.stdout.flush()
 #import os
 #directory = os.getcwd()+'/data' #"C:\\Users\\ehsan\Desktop\Torronto Stocks Data\\"
 #rets = pd.read_csv(directory + "/returns_TSX.csv", header=0)
