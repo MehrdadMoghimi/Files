@@ -11,7 +11,7 @@ import sys
 
 
 def safe_space_PM(returns, VARs):
-    PM = sum((returns < 0)*(returns > VARs)*(returns-VARs))
+    PM = sum((returns < 0) * (returns > VARs) * (returns - VARs))
     return PM
 
 
@@ -20,18 +20,20 @@ def violation_space_PM(returns, VARs):
     violations = e > 0
     labels = label(violations)
     num_of_clusters = labels[1]
-    clusters = [e[labels[0] == i] for i in range(1, num_of_clusters+1)]
-    cluster_centers = [np.mean(np.where(labels[0] == i)[0]) for i in range(1, num_of_clusters+1)]
-    cluster_quantity = [np.prod(1+c) for c in clusters]
+    clusters = [e[labels[0] == i] for i in range(1, num_of_clusters + 1)]
+    cluster_centers = [np.mean(np.where(labels[0] == i)[0]) for i in range(1, num_of_clusters + 1)]
+    cluster_quantity = [np.prod(1 + c) for c in clusters]
     PM = 0
     for i in range(num_of_clusters):
-        for j in range(i+1, num_of_clusters):
-            PM = PM + (cluster_quantity[i]*cluster_quantity[j]-1)/(cluster_centers[j]-cluster_centers[i])
+        for j in range(i + 1, num_of_clusters):
+            PM = PM + (cluster_quantity[i] * cluster_quantity[j] - 1) / (cluster_centers[j] - cluster_centers[i])
     return PM
 
 
 def penalization_measure(returns, VARs, alpha):
-    PM = ((1-alpha/100.0)*violation_space_PM(returns, VARs) + (alpha/100.0)*safe_space_PM(returns, VARs))/np.sum(returns<0)
+    PM = ((1 - alpha / 100.0) * violation_space_PM(returns, VARs) + (alpha / 100.0) * safe_space_PM(returns,
+                                                                                                    VARs)) / np.sum(
+        returns < 0)
     return PM
 
 
@@ -51,7 +53,7 @@ def HELP(returns):
 def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dist='Normal'):
     # volatility_model = {GARCH, EGARCH, ARCH, HARCH, GJR-GARCH, TARCH}
     # dist = {Normal, t, skewt, ged}
-    portfolio_returns = portfolio_returns*1000
+    portfolio_returns = portfolio_returns * 1000
     test_len = portfolio_returns.shape[0] - window_length
     forecast_std_arch = np.zeros(test_len)
     forecast_mean_arch = np.zeros(test_len)
@@ -83,8 +85,8 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
             arch_forecast = arch_fit.forecast(horizon=1)
             forecast_mean_arch[j] = arch_forecast.mean.iloc[-1, 0]
             forecast_std_arch[j] = np.sqrt(arch_forecast.variance.iloc[-1, 0])
-    forecast_mean_arch = forecast_mean_arch/1000.0
-    forecast_std_arch = forecast_std_arch/1000.0
+    forecast_mean_arch = forecast_mean_arch / 1000.0
+    forecast_std_arch = forecast_std_arch / 1000.0
     return forecast_mean_arch, forecast_std_arch
 
 
@@ -100,7 +102,7 @@ def forecast_mean(portfolio_returns, window_length):
         arima_fit = arima.fit(disp=0)
         arima_output = arima_fit.forecast()
         forecast[j] = arima_output[0]
-    forecast = forecast/1000
+    forecast = forecast / 1000
     return forecast
 
 
@@ -123,7 +125,9 @@ def calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha):
     print('\nRisk Metrics:')
     for i in range(1, portfolio_returns.shape[0]):
         progressBar(i, portfolio_returns.shape[0], bar_length=20)
-        forecast_std_risk_metric[i] = np.sqrt((1-lambda_risk_metric)*portfolio_returns[i]**2 + lambda_risk_metric*forecast_std_risk_metric[i-1]**2)
+        forecast_std_risk_metric[i] = np.sqrt(
+            (1 - lambda_risk_metric) * portfolio_returns[i] ** 2 + lambda_risk_metric * forecast_std_risk_metric[
+                i - 1] ** 2)
     forecast_std_test = forecast_std_risk_metric[window_length:]
     risk_metric_VaR = norm.ppf(alpha / 100.0) * forecast_std_test
     return risk_metric_VaR
@@ -131,43 +135,46 @@ def calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha):
 
 def calculate_GARCH_VAR(portfolio_returns, window_length, alpha):
     forecast_mean_garch, forecast_std_garch = forecast_std(portfolio_returns, window_length, volatility_model='GARCH')
-    garch_VaR = forecast_mean_garch + norm.ppf(alpha/100.0)*forecast_std_garch
+    garch_VaR = forecast_mean_garch + norm.ppf(alpha / 100.0) * forecast_std_garch
     return garch_VaR
 
 
 def calculate_FIGARCH_VAR(portfolio_returns, window_length, alpha):
-    forecast_mean_figarch, forecast_std_figarch = forecast_std(portfolio_returns, window_length, volatility_model='FIGARCH')
-    garch_VaR = forecast_mean_figarch + norm.ppf(alpha/100.0)*forecast_std_figarch
+    forecast_mean_figarch, forecast_std_figarch = forecast_std(portfolio_returns, window_length,
+                                                               volatility_model='FIGARCH')
+    garch_VaR = forecast_mean_figarch + norm.ppf(alpha / 100.0) * forecast_std_figarch
     return garch_VaR
 
 
 def calculate_EGARCH_VAR(portfolio_returns, window_length, alpha):
-    forecast_mean_egarch, forecast_std_egarch = forecast_std(portfolio_returns, window_length, volatility_model='EGARCH')
-    egarch_VaR = forecast_mean_egarch + norm.ppf(alpha/100.0)*forecast_std_egarch
+    forecast_mean_egarch, forecast_std_egarch = forecast_std(portfolio_returns, window_length,
+                                                             volatility_model='EGARCH')
+    egarch_VaR = forecast_mean_egarch + norm.ppf(alpha / 100.0) * forecast_std_egarch
     return egarch_VaR
 
 
 def calculate_ARCH_VAR(portfolio_returns, window_length, alpha):
     forecast_mean_arch, forecast_std_arch = forecast_std(portfolio_returns, window_length, volatility_model='ARCH')
-    fiarch_VaR = forecast_mean_arch + norm.ppf(alpha/100.0)*forecast_std_arch
+    fiarch_VaR = forecast_mean_arch + norm.ppf(alpha / 100.0) * forecast_std_arch
     return fiarch_VaR
 
 
 def calculate_HARCH_VAR(portfolio_returns, window_length, alpha):
     forecast_mean_harch, forecast_std_harch = forecast_std(portfolio_returns, window_length, volatility_model='HARCH')
-    harch_VaR = forecast_mean_harch + norm.ppf(alpha/100.0)*forecast_std_harch
+    harch_VaR = forecast_mean_harch + norm.ppf(alpha / 100.0) * forecast_std_harch
     return harch_VaR
 
 
 def calculate_TARCH_VAR(portfolio_returns, window_length, alpha):
     forecast_mean_tarch, forecast_std_tarch = forecast_std(portfolio_returns, window_length, volatility_model='TARCH')
-    harch_VaR = forecast_mean_tarch + norm.ppf(alpha/100.0)*forecast_std_tarch
+    harch_VaR = forecast_mean_tarch + norm.ppf(alpha / 100.0) * forecast_std_tarch
     return harch_VaR
 
 
 def calculate_GJR_GARCH_VAR(portfolio_returns, window_length, alpha):
-    forecast_mean_tarch, forecast_std_tarch = forecast_std(portfolio_returns, window_length, volatility_model='GJR-GARCH')
-    harch_VaR = forecast_mean_tarch + norm.ppf(alpha/100.0)*forecast_std_tarch
+    forecast_mean_tarch, forecast_std_tarch = forecast_std(portfolio_returns, window_length,
+                                                           volatility_model='GJR-GARCH')
+    harch_VaR = forecast_mean_tarch + norm.ppf(alpha / 100.0) * forecast_std_tarch
     return harch_VaR
 
 
@@ -191,7 +198,7 @@ def calculate_MonteCarlo_VAR(portfolio_returns, window_length, alpha):
     MEAN = (forecast_mean_arima / 100.0).reshape((-1, 1))
     raw_samples = np.random.normal(0, 1, size=(1, n_samples))
     samples_with_scale = np.repeat(MEAN, n_samples, axis=1) + np.dot(STD, raw_samples)
-    mc_VaR = np.percentile(samples_with_scale, q=alpha, axis=1).reshape(-1,1)
+    mc_VaR = np.percentile(samples_with_scale, q=alpha, axis=1).reshape(-1, 1)
     return mc_VaR
 
 
@@ -225,8 +232,8 @@ def calculate_ratios(portfolio_returns, window_length, alpha):
     # var_models['CAViaR_indirect_GARCH'] = calculate_CAViaR_indirect_GARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['CAViaR_adaptive'] = calculate_CAViaR_adaptive_VAR(portfolio_returns, window_length, alpha)
     var_models['Var_Covar'] = calculate_Var_Covar_VAR(portfolio_returns, window_length, alpha)
-	var_models['RiskMetrics'] = calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha)
-	var_models['Historical'] = calculate_Historical_VAR(portfolio_returns, window_length, alpha)
+    var_models['RiskMetrics'] = calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha)
+    var_models['Historical'] = calculate_Historical_VAR(portfolio_returns, window_length, alpha)
     var_models['MonteCarlo'] = calculate_MonteCarlo_VAR(portfolio_returns, window_length, alpha)
     var_models['GARCH'] = calculate_GARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['FIGARCH'] = calculate_FIGARCH_VAR(portfolio_returns, window_length, alpha)
@@ -258,17 +265,33 @@ def calculate_ratios(portfolio_returns, window_length, alpha):
     # var_models_pm = var_models_pm.append({'name': 'CAViaR_Asym', 'PM': penalization_measure(test_returns, var_models['CAViaR_Asym'], alpha)}, ignore_index=True)
     # var_models_pm = var_models_pm.append({'name': 'CAViaR_indirect_GARCH', 'PM': penalization_measure(test_returns, var_models['CAViaR_indirect_GARCH'], alpha)}, ignore_index=True)
     # var_models_pm = var_models_pm.append({'name': 'CAViaR_adaptive', 'PM': penalization_measure(test_returns, var_models['CAViaR_adaptive'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'Var_Covar', 'PM': penalization_measure(test_returns, var_models['Var_Covar'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'RiskMetrics', 'PM': penalization_measure(test_returns, var_models['RiskMetrics'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'GARCH', 'PM': penalization_measure(test_returns, var_models['GARCH'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'FIGARCH', 'PM': penalization_measure(test_returns, var_models['FIGARCH'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'EGARCH', 'PM': penalization_measure(test_returns, var_models['EGARCH'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'ARCH', 'PM': penalization_measure(test_returns, var_models['ARCH'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'HARCH', 'PM': penalization_measure(test_returns, var_models['HARCH'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'TARCH', 'PM': penalization_measure(test_returns, var_models['TARCH'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'GJR_GARCH', 'PM': penalization_measure(test_returns, var_models['GJR_GARCH'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'Historical', 'PM': penalization_measure(test_returns, var_models['Historical'], alpha)}, ignore_index=True)
-    var_models_pm = var_models_pm.append({'name': 'MonteCarlo', 'PM': penalization_measure(test_returns, var_models['MonteCarlo'], alpha)}, ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'Var_Covar', 'PM': penalization_measure(test_returns, var_models['Var_Covar'], alpha)},
+        ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'RiskMetrics', 'PM': penalization_measure(test_returns, var_models['RiskMetrics'], alpha)},
+        ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'GARCH', 'PM': penalization_measure(test_returns, var_models['GARCH'], alpha)}, ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'FIGARCH', 'PM': penalization_measure(test_returns, var_models['FIGARCH'], alpha)}, ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'EGARCH', 'PM': penalization_measure(test_returns, var_models['EGARCH'], alpha)}, ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'ARCH', 'PM': penalization_measure(test_returns, var_models['ARCH'], alpha)}, ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'HARCH', 'PM': penalization_measure(test_returns, var_models['HARCH'], alpha)}, ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'TARCH', 'PM': penalization_measure(test_returns, var_models['TARCH'], alpha)}, ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'GJR_GARCH', 'PM': penalization_measure(test_returns, var_models['GJR_GARCH'], alpha)},
+        ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'Historical', 'PM': penalization_measure(test_returns, var_models['Historical'], alpha)},
+        ignore_index=True)
+    var_models_pm = var_models_pm.append(
+        {'name': 'MonteCarlo', 'PM': penalization_measure(test_returns, var_models['MonteCarlo'], alpha)},
+        ignore_index=True)
     # var_models_pm = var_models_pm.append({'name': 'EVT', 'PM': penalization_measure(test_returns, var_models['EVT'], alpha)}, ignore_index=True)
     #######################################################################################################
     var_models_pm['ratio'] = var_models_pm['PM'] / sum(var_models_pm['PM'])
@@ -284,15 +307,14 @@ def predictive_ability_test(test_returns, var_models, benchmark='GARCH'):
     # kappa_1 = var_models_loss_wo_benchmark.subtract(benchmark_loss, axis=0)
     kappa = var_models_loss.div(np.sum(var_models_loss, axis=1), axis=0)
     H_0 = np.mean(kappa, axis=0)
-    W = np.sum(kappa > (1/var_models_loss.shape[1]))
+    W = np.sum(kappa > (1 / var_models_loss.shape[1]))
     p = 0.5
     T = var_models.shape[0]
-    W_hat = (W - p*T)/np.sqrt(p*(1-p)*T)
+    W_hat = (W - p * T) / np.sqrt(p * (1 - p) * T)
     return 0
 
 
 def plot(returns, VARs, file_name=None):
-
     # Re-add the time series index
     r = pd.Series(returns)
     q = pd.Series(VARs)
@@ -328,26 +350,26 @@ def plot(returns, VARs, file_name=None):
     if file_name is None:
         plt.show()
     else:
-        plt.savefig(file_name+'.png', bbox_inches="tight")
+        plt.savefig(file_name + '.png', bbox_inches="tight")
     plt.close("all")
 
 
 def progressBar(value, end_value, bar_length=20):
     percent = float(value) / end_value
-    arrow = '-' * int(round(percent * bar_length)-1) + '>'
+    arrow = '-' * int(round(percent * bar_length) - 1) + '>'
     spaces = ' ' * (bar_length - len(arrow))
 
     sys.stdout.write("\rCompleted: [{0}] {1}%".format(arrow + spaces, int(round(percent * 100))))
     sys.stdout.flush()
-#import os
-#directory = os.getcwd()+'/data' #"C:\\Users\\ehsan\Desktop\Torronto Stocks Data\\"
-#rets = pd.read_csv(directory + "/returns_TSX.csv", header=0)
-#rets['date'] = pd.to_datetime(rets['date'])
+# import os
+# directory = os.getcwd()+'/data' #"C:\\Users\\ehsan\Desktop\Torronto Stocks Data\\"
+# rets = pd.read_csv(directory + "/returns_TSX.csv", header=0)
+# rets['date'] = pd.to_datetime(rets['date'])
 # rets = rets.set_index('date')
-#n, m = rets.shape
-#weights = np.ones((m, 1)) / m
-#portfolio_returns = np.dot(rets, weights).squeeze()
-#window_length = np.floor(0.875 * n).astype('int64')
+# n, m = rets.shape
+# weights = np.ones((m, 1)) / m
+# portfolio_returns = np.dot(rets, weights).squeeze()
+# window_length = np.floor(0.875 * n).astype('int64')
 # alpha = 5
 # var_models, var_models_pm = calculate_ratios(portfolio_returns, window_length, alpha)
 
