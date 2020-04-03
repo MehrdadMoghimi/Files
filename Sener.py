@@ -55,7 +55,7 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
     test_len = portfolio_returns.shape[0] - window_length
     forecast_std_arch = np.zeros(test_len)
     forecast_mean_arch = np.zeros(test_len)
-    print('\n' + volatility_model + ':')
+    print('\n' + volatility_model)
     if volatility_model == 'GJR-GARCH':
         for j in range(0, test_len):
             progressBar(j, test_len, bar_length=20)
@@ -92,7 +92,7 @@ def forecast_mean(portfolio_returns, window_length):
     portfolio_returns = portfolio_returns * 1000
     test_len = portfolio_returns.shape[0] - window_length
     forecast = np.zeros(test_len)
-    print('\nforecast_mean:')
+    print('\nforecast_mean')
     for j in range(0, test_len):
         progressBar(j, test_len, bar_length=20)
         window = portfolio_returns[j:j + window_length]
@@ -186,7 +186,7 @@ def calculate_MonteCarlo_VAR(portfolio_returns, window_length, alpha):
     seed(0)
     n_samples = 10000
     forecast_mean_arima = forecast_mean(portfolio_returns, window_length)
-    forecast_std_garch = forecast_std(portfolio_returns, window_length, volatility_model='garch')
+    forecast_mean_arch, forecast_std_garch = forecast_std(portfolio_returns, window_length, volatility_model='garch')
     STD = (np.sqrt(forecast_std_garch) / 100.0).reshape((-1, 1))
     MEAN = (forecast_mean_arima / 100.0).reshape((-1, 1))
     raw_samples = np.random.normal(0, 1, size=(1, n_samples))
@@ -225,7 +225,9 @@ def calculate_ratios(portfolio_returns, window_length, alpha):
     # var_models['CAViaR_indirect_GARCH'] = calculate_CAViaR_indirect_GARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['CAViaR_adaptive'] = calculate_CAViaR_adaptive_VAR(portfolio_returns, window_length, alpha)
     var_models['Var_Covar'] = calculate_Var_Covar_VAR(portfolio_returns, window_length, alpha)
-    var_models['RiskMetrics'] = calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha)
+	var_models['RiskMetrics'] = calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha)
+	var_models['Historical'] = calculate_Historical_VAR(portfolio_returns, window_length, alpha)
+    var_models['MonteCarlo'] = calculate_MonteCarlo_VAR(portfolio_returns, window_length, alpha)
     var_models['GARCH'] = calculate_GARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['FIGARCH'] = calculate_FIGARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['EGARCH'] = calculate_EGARCH_VAR(portfolio_returns, window_length, alpha)
@@ -233,8 +235,6 @@ def calculate_ratios(portfolio_returns, window_length, alpha):
     var_models['HARCH'] = calculate_HARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['TARCH'] = calculate_TARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['GJR_GARCH'] = calculate_GJR_GARCH_VAR(portfolio_returns, window_length, alpha)
-    var_models['Historical'] = calculate_Historical_VAR(portfolio_returns, window_length, alpha)
-    var_models['MonteCarlo'] = calculate_MonteCarlo_VAR(portfolio_returns, window_length, alpha)
     # var_models['EVT'] = calculate_EVT_VAR(portfolio_returns, window_length, alpha)
     #######################################################################################################
     # plot(test_returns, var_models['CAViaR_Sym'].values, file_name='1.CAViaR_Sym')
