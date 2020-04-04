@@ -51,11 +51,11 @@ def HELP(returns):
 def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dist='Normal'):
     # volatility_model = {GARCH, EGARCH, ARCH, HARCH, GJR-GARCH, TARCH}
     # dist = {Normal, t, skewt, ged}
-    portfolio_returns = portfolio_returns * 1000
+    portfolio_returns = portfolio_returns * 100.0
     test_len = portfolio_returns.shape[0] - window_length
     forecast_std_arch = np.zeros(test_len)
     forecast_mean_arch = np.zeros(test_len)
-    print('\n' + volatility_model)
+    print('\n' + volatility_model + ':')
     if volatility_model == 'GJR-GARCH':
         for j in range(0, test_len):
             progressBar(j, test_len, bar_length=20)
@@ -83,13 +83,13 @@ def forecast_std(portfolio_returns, window_length, volatility_model='GARCH', dis
             arch_forecast = arch_fit.forecast(horizon=1)
             forecast_mean_arch[j] = arch_forecast.mean.iloc[-1, 0]
             forecast_std_arch[j] = np.sqrt(arch_forecast.variance.iloc[-1, 0])
-    forecast_mean_arch = forecast_mean_arch / 1000.0
-    forecast_std_arch = forecast_std_arch / 1000.0
+    forecast_mean_arch = forecast_mean_arch / 100.0
+    forecast_std_arch = forecast_std_arch / 100.0
     return forecast_mean_arch, forecast_std_arch
 
 
 def forecast_mean(portfolio_returns, window_length):
-    portfolio_returns = portfolio_returns * 1000
+    portfolio_returns = portfolio_returns * 100.0
     test_len = portfolio_returns.shape[0] - window_length
     forecast = np.zeros(test_len)
     print('\nForecast mean ARIMA:')
@@ -100,7 +100,7 @@ def forecast_mean(portfolio_returns, window_length):
         arima_fit = arima.fit(disp=0)
         arima_output = arima_fit.forecast()
         forecast[j] = arima_output[0]
-    forecast = forecast / 1000
+    forecast = forecast / 100.0
     return forecast
 
 
@@ -194,7 +194,9 @@ def calculate_Filtered_Historical_VAR(portfolio_returns, window_length, alpha, f
     for j in range(test_len):
         progressBar(j, test_len, bar_length=20)
         window = portfolio_returns[j:j + window_length]
-        filtered_window = forecast_mean_arima[j] + (window - np.mean(window)) * (forecast_std_garch[j]/np.std(window))
+        MEAN = forecast_mean_arima[j]
+        STD = forecast_std_garch[j]
+        filtered_window = MEAN + (window - np.mean(window)) * (STD/np.std(window))
         f_hist_VaR[j] = np.percentile(filtered_window, alpha)
     return f_hist_VaR
 
@@ -230,10 +232,8 @@ def calculate_EVT_VAR():
     return 0
 
 
-def calculate_var_models(portfolio_returns, window_length, alpha):
+def calculate_var_models(portfolio_returns, window_length, alpha, forecast_mean_arima, forecast_std_garch):
     var_models = pd.DataFrame()
-    forecast_mean_arima = forecast_mean(portfolio_returns, window_length)
-    forecast_mean_arch, forecast_std_garch = forecast_std(portfolio_returns, window_length, volatility_model='garch')
     # var_models['CAViaR_Sym'] = calculate_CAViaR_Sym_VAR(portfolio_returns, window_length, alpha)
     # var_models['CAViaR_Asym'] = calculate_CAViaR_Asym_VAR(portfolio_returns, window_length, alpha)
     # var_models['CAViaR_indirect_GARCH'] = calculate_CAViaR_indirect_GARCH_VAR(portfolio_returns, window_length, alpha)
