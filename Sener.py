@@ -244,11 +244,11 @@ def calculate_var_models(portfolio_returns, window_length, alpha, forecast_mean_
     var_models['F_Historical'] = calculate_Filtered_Historical_VAR(portfolio_returns, window_length, alpha, forecast_mean_arima, forecast_std_garch)
     var_models['MonteCarlo'] = calculate_MonteCarlo_VAR(alpha, forecast_mean_arima, forecast_std_garch)
     var_models['GARCH'] = calculate_GARCH_VAR(portfolio_returns, window_length, alpha)
-    var_models['FIGARCH'] = calculate_FIGARCH_VAR(portfolio_returns, window_length, alpha)
+    # var_models['FIGARCH'] = calculate_FIGARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['EGARCH'] = calculate_EGARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['ARCH'] = calculate_ARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['HARCH'] = calculate_HARCH_VAR(portfolio_returns, window_length, alpha)
-    var_models['TARCH'] = calculate_TARCH_VAR(portfolio_returns, window_length, alpha)
+    # var_models['TARCH'] = calculate_TARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['GJR_GARCH'] = calculate_GJR_GARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['EVT'] = calculate_EVT_VAR(portfolio_returns, window_length, alpha)
     return var_models
@@ -332,6 +332,7 @@ def progressBar(value, end_value, bar_length=20):
 
     sys.stdout.write("\rCompleted: [{0}] {1}%".format(arrow + spaces, int(round(percent * 100))))
     sys.stdout.flush()
+
 # import os
 # directory = os.getcwd()+'/data' #"C:\\Users\\ehsan\Desktop\Torronto Stocks Data\\"
 # rets = pd.read_csv(directory + "/returns_TSX.csv", header=0)
