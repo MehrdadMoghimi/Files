@@ -240,7 +240,7 @@ def calculate_var_models(portfolio_returns, window_length, alpha, forecast_mean_
     # var_models['CAViaR_adaptive'] = calculate_CAViaR_adaptive_VAR(portfolio_returns, window_length, alpha)
     # var_models['Var_Covar'] = calculate_Var_Covar_VAR(portfolio_returns, window_length, alpha)
     var_models['RiskMetrics'] = calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha)
-    # var_models['Historical'] = calculate_Historical_VAR(portfolio_returns, window_length, alpha)
+    var_models['Historical'] = calculate_Historical_VAR(portfolio_returns, window_length, alpha)
     var_models['F_Historical'] = calculate_Filtered_Historical_VAR(portfolio_returns, window_length, alpha, forecast_mean_arima, forecast_std_garch)
     var_models['MonteCarlo'] = calculate_MonteCarlo_VAR(alpha, forecast_mean_arima, forecast_std_garch)
     var_models['GARCH'] = calculate_GARCH_VAR(portfolio_returns, window_length, alpha)
