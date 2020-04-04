@@ -222,11 +222,8 @@ def calculate_EVT_VAR():
     return 0
 
 
-def calculate_ratios(portfolio_returns, window_length, alpha):
-    test_returns = portfolio_returns[window_length:]
-    var_models_pm = pd.DataFrame(columns=['name', 'PM', 'ratio'])
+def calculate_var_models(portfolio_returns, window_length, alpha):
     var_models = pd.DataFrame()
-    #######################################################################################################
     # var_models['CAViaR_Sym'] = calculate_CAViaR_Sym_VAR(portfolio_returns, window_length, alpha)
     # var_models['CAViaR_Asym'] = calculate_CAViaR_Asym_VAR(portfolio_returns, window_length, alpha)
     # var_models['CAViaR_indirect_GARCH'] = calculate_CAViaR_indirect_GARCH_VAR(portfolio_returns, window_length, alpha)
@@ -243,24 +240,12 @@ def calculate_ratios(portfolio_returns, window_length, alpha):
     var_models['TARCH'] = calculate_TARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['GJR_GARCH'] = calculate_GJR_GARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['EVT'] = calculate_EVT_VAR(portfolio_returns, window_length, alpha)
-    #######################################################################################################
-    # plot(test_returns, var_models['CAViaR_Sym'].values, file_name='1.CAViaR_Sym')
-    # plot(test_returns, var_models['CAViaR_Asym'].values, file_name='2.CAViaR_Asym')
-    # plot(test_returns, var_models['CAViaR_indirect_GARCH'].values, file_name='3.CAViaR_indirect_GARCH')
-    # plot(test_returns, var_models['CAViaR_adaptive'].values, file_name='4.CAViaR_adaptive')
-    plot(test_returns, var_models['Var_Covar'].values, file_name='5.Var_Covar')
-    plot(test_returns, var_models['RiskMetrics'].values, file_name='6.RiskMetrics')
-    plot(test_returns, var_models['GARCH'].values, file_name='7.GARCH')
-    plot(test_returns, var_models['FIGARCH'].values, file_name='8.FIGARCH')
-    plot(test_returns, var_models['EGARCH'].values, file_name='9.EGARCH')
-    plot(test_returns, var_models['ARCH'].values, file_name='10.ARCH')
-    plot(test_returns, var_models['HARCH'].values, file_name='11.HARCH')
-    plot(test_returns, var_models['TARCH'].values, file_name='12.TARCH')
-    plot(test_returns, var_models['GJR_GARCH'].values, file_name='13.GJR_GARCH')
-    plot(test_returns, var_models['Historical'].values, file_name='14.Historical')
-    plot(test_returns, var_models['MonteCarlo'].values, file_name='15.MonteCarlo')
-    # plot(test_returns, var_models['EVT'].values, file_name='16.EVT.png')
-    #######################################################################################################
+    return var_models
+
+
+def calculate_var_models_pm(portfolio_returns, window_length, var_models, alpha):
+    test_returns = portfolio_returns[window_length:]
+    var_models_pm = pd.DataFrame(columns=['name', 'PM', 'ratio'])
     # var_models_pm = var_models_pm.append({'name': 'CAViaR_Sym', 'PM': penalization_measure(test_returns, var_models['CAViaR_Sym'], alpha)}, ignore_index=True)
     # var_models_pm = var_models_pm.append({'name': 'CAViaR_Asym', 'PM': penalization_measure(test_returns, var_models['CAViaR_Asym'], alpha)}, ignore_index=True)
     # var_models_pm = var_models_pm.append({'name': 'CAViaR_indirect_GARCH', 'PM': penalization_measure(test_returns, var_models['CAViaR_indirect_GARCH'], alpha)}, ignore_index=True)
@@ -295,7 +280,27 @@ def calculate_ratios(portfolio_returns, window_length, alpha):
     # var_models_pm = var_models_pm.append({'name': 'EVT', 'PM': penalization_measure(test_returns, var_models['EVT'], alpha)}, ignore_index=True)
     #######################################################################################################
     var_models_pm['ratio'] = var_models_pm['PM'] / sum(var_models_pm['PM'])
-    return var_models, var_models_pm
+    return var_models_pm
+
+
+def plot_all(portfolio_returns, window_length, var_models):
+    test_returns = portfolio_returns[window_length:]
+    # plot(test_returns, var_models['CAViaR_Sym'].values, file_name='1.CAViaR_Sym')
+    # plot(test_returns, var_models['CAViaR_Asym'].values, file_name='2.CAViaR_Asym')
+    # plot(test_returns, var_models['CAViaR_indirect_GARCH'].values, file_name='3.CAViaR_indirect_GARCH')
+    # plot(test_returns, var_models['CAViaR_adaptive'].values, file_name='4.CAViaR_adaptive')
+    plot(test_returns, var_models['Var_Covar'].values, file_name='5.Var_Covar')
+    plot(test_returns, var_models['RiskMetrics'].values, file_name='6.RiskMetrics')
+    plot(test_returns, var_models['GARCH'].values, file_name='7.GARCH')
+    plot(test_returns, var_models['FIGARCH'].values, file_name='8.FIGARCH')
+    plot(test_returns, var_models['EGARCH'].values, file_name='9.EGARCH')
+    plot(test_returns, var_models['ARCH'].values, file_name='10.ARCH')
+    plot(test_returns, var_models['HARCH'].values, file_name='11.HARCH')
+    plot(test_returns, var_models['TARCH'].values, file_name='12.TARCH')
+    plot(test_returns, var_models['GJR_GARCH'].values, file_name='13.GJR_GARCH')
+    plot(test_returns, var_models['Historical'].values, file_name='14.Historical')
+    plot(test_returns, var_models['MonteCarlo'].values, file_name='15.MonteCarlo')
+    # plot(test_returns, var_models['EVT'].values, file_name='16.EVT.png')
 
 
 def predictive_ability_test(test_returns, var_models, benchmark='GARCH'):
@@ -316,8 +321,8 @@ def predictive_ability_test(test_returns, var_models, benchmark='GARCH'):
 
 def plot(returns, VARs, file_name=None):
     # Re-add the time series index
-    r = pd.Series(returns)
-    q = pd.Series(VARs)
+    r = pd.Series(returns.squeeze())
+    q = pd.Series(VARs.squeeze())
 
     sns.set_context("paper")
     sns.set_style("whitegrid", {"font.family": "serif", "font.serif": "Computer Modern Roman", "text.usetex": True})
