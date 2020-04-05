@@ -49,7 +49,7 @@ def LRCCI(Returns, VaR):
     Time = len(Returns)
     First_Windows = Time - len(VaR)
     LRCC = pd.concat([Returns[First_Windows:], -VaR], axis=1)
-    TF = LRCC.T.iloc[0] > LRCC.T.iloc[1]
+    TF = LRCC.iloc[:, 0] > LRCC.iloc[:, 1]
     n00 = 0
     n10 = 0
     n01 = 0
@@ -91,8 +91,8 @@ def RQL(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     RQL = []
     for i in range(len(VaR)):
-        if Compare.T.iloc[0][i] < Compare.T.iloc[1][i]:
-            quadratic = 1 + (Compare.T.iloc[1][i] - Compare.T.iloc[0][i]) ** 2
+        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
+            quadratic = 1 + (Compare.iloc[i, 1] - Compare.iloc[i, 0]) ** 2
         else:
             quadratic = 0
         RQL.append(quadratic)
@@ -111,8 +111,8 @@ def RL(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     RL = []
     for i in range(len(VaR)):
-        if Compare.T.iloc[0][i] < Compare.T.iloc[1][i]:
-            quadratic = (Compare.T.iloc[1][i] - Compare.T.iloc[0][i])
+        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
+            quadratic = (Compare.iloc[i, 1] - Compare.iloc[i, 0])
         else:
             quadratic = 0
         RL.append(quadratic)
@@ -131,8 +131,8 @@ def RQ(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     RQ = []
     for i in range(len(VaR)):
-        if Compare.T.iloc[0][i] < Compare.T.iloc[1][i]:
-            quadratic = (Compare.T.iloc[1][i] - Compare.T.iloc[0][i]) ** 2
+        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
+            quadratic = (Compare.iloc[i, 1] - Compare.iloc[i, 0]) ** 2
         else:
             quadratic = 0
         RQ.append(quadratic)
@@ -151,8 +151,8 @@ def RC_1(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     RC_1 = []
     for i in range(len(VaR)):
-        if Compare.T.iloc[0][i] < Compare.T.iloc[1][i]:
-            quadratic = np.abs(1 - np.abs(Compare.T.iloc[0][i] / Compare.T.iloc[1][i]))
+        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
+            quadratic = np.abs(1 - np.abs(Compare.iloc[i, 0] / Compare.iloc[i, 1]))
         else:
             quadratic = 0
         RC_1.append(quadratic)
@@ -171,9 +171,9 @@ def RC_2(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     RC_2 = []
     for i in range(len(VaR)):
-        if Compare.T.iloc[0][i] < Compare.T.iloc[1][i]:
-            quadratic = (np.abs(Compare.T.iloc[0][i]) - np.abs(Compare.T.iloc[1][i])) ** 2 / (
-                np.abs(Compare.T.iloc[1][i]))
+        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
+            quadratic = (np.abs(Compare.iloc[i, 0]) - np.abs(Compare.iloc[i, 1])) ** 2 / (
+                np.abs(Compare.iloc[i, 1]))
         else:
             quadratic = 0
         RC_2.append(quadratic)
@@ -192,8 +192,8 @@ def RC_3(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     RC_3 = []
     for i in range(len(VaR)):
-        if Compare.T.iloc[0][i] < Compare.T.iloc[1][i]:
-            quadratic = (np.abs(Compare.T.iloc[1][i] - Compare.T.iloc[0][i]))
+        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
+            quadratic = (np.abs(Compare.iloc[i, 1] - Compare.iloc[i, 0]))
         else:
             quadratic = 0
         RC_3.append(quadratic)
@@ -216,7 +216,7 @@ def FC_1(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     FC_1 = []
     for i in range(len(VaR)):
-        quadratic = np.abs(1 - np.abs(Compare.T.iloc[0][i] / Compare.T.iloc[1][i]))
+        quadratic = np.abs(1 - np.abs(Compare.iloc[i, 0] / Compare.iloc[i, 1]))
         FC_1.append(quadratic)
         FC_1_Score = np.sum(FC_1)
     return FC_1_Score
@@ -233,7 +233,7 @@ def FC_2(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     FC_2 = []
     for i in range(len(VaR)):
-        quadratic = (np.abs(Compare.T.iloc[0][i]) - np.abs(Compare.T.iloc[1][i]) ** 2) / np.abs(Compare.T.iloc[1][i])
+        quadratic = (np.abs(Compare.iloc[i, 0]) - np.abs(Compare.iloc[i, 1]) ** 2) / np.abs(Compare.iloc[i, 1])
         FC_2.append(quadratic)
         FC_2_Score = np.sum(FC_2)
     return FC_2_Score
@@ -250,7 +250,7 @@ def FC_3(Returns, VaR):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     FC_3 = []
     for i in range(len(VaR)):
-        quadratic = np.abs(Compare.T.iloc[1][i] - Compare.T.iloc[0][i])
+        quadratic = np.abs(Compare.iloc[i, 1] - Compare.iloc[i, 0])
         FC_3.append(quadratic)
         FC_3_Score = np.sum(FC_3)
     return FC_3_Score
@@ -268,10 +268,10 @@ def QL(Returns, VaR, ConfidenceLevel):
     Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
     QL = []
     for i in range(len(VaR)):
-        if Compare.T.iloc[0][i] < Compare.T.iloc[1][i]:
-            QuantileLoss = (Compare.T.iloc[0][i] - Compare.T.iloc[1][i]) ** 2
+        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
+            QuantileLoss = (Compare.iloc[i, 0] - Compare.iloc[i, 1]) ** 2
         else:
-            QuantileLoss = (Compare.T.iloc[0][-i - 1:].quantile(1 - ConfidenceLevel) - Compare.T.iloc[1][i]) ** 2
+            QuantileLoss = (Compare.iloc[:, 0][-i - 1:].quantile(1 - ConfidenceLevel) - Compare.iloc[i, 1]) ** 2
         QL.append(QuantileLoss)
         QL_Score = np.sum(QL)
     return QL_Score
