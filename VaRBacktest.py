@@ -7,6 +7,7 @@ Created on Thu May 10 13:18:10 2018
 
 import pandas as pd
 import numpy as np
+from scipy import stats
 
 
 # ==============================================================================
@@ -23,7 +24,7 @@ def UCoverage(Returns, VaR, ConfidenceLevel):
     t = (1 - N / T) ** (T - N) * (N / T) ** N
     c = ((ConfidenceLevel) ** (T - N)) * ((1 - ConfidenceLevel) ** N)
     Likelihood_Ratio = 2 * np.log(t) - 2 * np.log(c)
-    return Likelihood_Ratio
+    return Likelihood_Ratio, 1-stats.chi2.cdf(Likelihood_Ratio, 1)
 
 
 # ==============================================================================
@@ -67,7 +68,7 @@ def LRCCI(Returns, VaR):
     Numeritor = ((1 - pi) ** (n00 + n10)) * (pi ** (n01 + n11))
     Denominator = ((1 - pi0) ** (n00)) * (pi0 ** n01) * ((1 - pi1) ** (n10)) * (pi1 ** n11)
     LRCCI = -2 * np.log(Numeritor / Denominator)
-    return LRCCI
+    return LRCCI, 1-stats.chi2.cdf(LRCCI, 1)
 
 
 # ==============================================================================
@@ -81,15 +82,11 @@ def LRCCI(Returns, VaR):
 # ==============================================================================
 def RQL(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    RQL = []
-    for i in range(len(VaR)):
-        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
-            quadratic = 1 + (Compare.iloc[i, 1] - Compare.iloc[i, 0]) ** 2
-        else:
-            quadratic = 0
-        RQL.append(quadratic)
-        RQL_Score = np.sum(RQL)
-    return RQL_Score
+    Compare = Compare[Compare.iloc[:, 0] < Compare.iloc[:, 1]]
+    quadratic = 1 + (Compare.iloc[:, 1] - Compare.iloc[:, 0]) ** 2
+    RQL_mean = np.mean(quadratic)
+    RQL_sum = np.sum(quadratic)
+    return RQL_mean, RQL_sum
 
 
 # ==============================================================================
@@ -99,15 +96,11 @@ def RQL(Returns, VaR):
 # ==============================================================================
 def RL(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    RL = []
-    for i in range(len(VaR)):
-        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
-            quadratic = (Compare.iloc[i, 1] - Compare.iloc[i, 0])
-        else:
-            quadratic = 0
-        RL.append(quadratic)
-        RL_Score = np.sum(RL)
-    return RL_Score
+    Compare = Compare[Compare.iloc[:, 0] < Compare.iloc[:, 1]]
+    quadratic = (Compare.iloc[:, 1] - Compare.iloc[:, 0])
+    RL_mean = np.mean(quadratic)
+    RL_sum = np.sum(quadratic)
+    return RL_mean, RL_sum
 
 
 # ==============================================================================
@@ -117,15 +110,11 @@ def RL(Returns, VaR):
 # ==============================================================================
 def RQ(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    RQ = []
-    for i in range(len(VaR)):
-        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
-            quadratic = (Compare.iloc[i, 1] - Compare.iloc[i, 0]) ** 2
-        else:
-            quadratic = 0
-        RQ.append(quadratic)
-        RQ_Score = np.sum(RQ)
-    return RQ_Score
+    Compare = Compare[Compare.iloc[:, 0] < Compare.iloc[:, 1]]
+    quadratic = (Compare.iloc[:, 1] - Compare.iloc[:, 0])**2
+    RQ_mean = np.mean(quadratic)
+    RQ_sum = np.sum(quadratic)
+    return RQ_mean, RQ_sum
 
 
 # ==============================================================================
@@ -135,15 +124,11 @@ def RQ(Returns, VaR):
 # ==============================================================================
 def RC_1(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    RC_1 = []
-    for i in range(len(VaR)):
-        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
-            quadratic = np.abs(1 - np.abs(Compare.iloc[i, 0] / Compare.iloc[i, 1]))
-        else:
-            quadratic = 0
-        RC_1.append(quadratic)
-        RC_1_Score = np.sum(RC_1)
-    return RC_1_Score
+    Compare = Compare[Compare.iloc[:, 0] < Compare.iloc[:, 1]]
+    quadratic = np.abs(1-np.abs(Compare.iloc[:, 0]/Compare.iloc[:, 1]))
+    RC1_mean = np.mean(quadratic)
+    RC1_sum = np.sum(quadratic)
+    return RC1_mean, RC1_sum
 
 
 # ==============================================================================
@@ -153,16 +138,11 @@ def RC_1(Returns, VaR):
 # ==============================================================================
 def RC_2(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    RC_2 = []
-    for i in range(len(VaR)):
-        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
-            quadratic = (np.abs(Compare.iloc[i, 0]) - np.abs(Compare.iloc[i, 1])) ** 2 / (
-                np.abs(Compare.iloc[i, 1]))
-        else:
-            quadratic = 0
-        RC_2.append(quadratic)
-        RC_2_Score = np.sum(RC_2)
-    return RC_2_Score
+    Compare = Compare[Compare.iloc[:, 0] < Compare.iloc[:, 1]]
+    quadratic = (np.abs(Compare.iloc[:, 0]) - np.abs(Compare.iloc[:, 1])) ** 2 / (np.abs(Compare.iloc[:, 1]))
+    RC2_mean = np.mean(quadratic)
+    RC2_sum = np.sum(quadratic)
+    return RC2_mean, RC2_sum
 
 
 # ==============================================================================
@@ -172,15 +152,11 @@ def RC_2(Returns, VaR):
 # ==============================================================================
 def RC_3(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    RC_3 = []
-    for i in range(len(VaR)):
-        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
-            quadratic = (np.abs(Compare.iloc[i, 1] - Compare.iloc[i, 0]))
-        else:
-            quadratic = 0
-        RC_3.append(quadratic)
-        RC_3_Score = np.sum(RC_3)
-    return RC_3_Score
+    Compare = Compare[Compare.iloc[:, 0] < Compare.iloc[:, 1]]
+    quadratic = (np.abs(Compare.iloc[:, 1] - Compare.iloc[:, 0]))
+    RC3_mean = np.mean(quadratic)
+    RC3_sum = np.sum(quadratic)
+    return RC3_mean, RC3_sum
 
 
 # ==============================================================================
@@ -194,12 +170,10 @@ def RC_3(Returns, VaR):
 # ==============================================================================
 def FC_1(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    FC_1 = []
-    for i in range(len(VaR)):
-        quadratic = np.abs(1 - np.abs(Compare.iloc[i, 0] / Compare.iloc[i, 1]))
-        FC_1.append(quadratic)
-        FC_1_Score = np.sum(FC_1)
-    return FC_1_Score
+    quadratic = np.abs(1 - np.abs(Compare.iloc[:, 0] / Compare.iloc[:, 1]))
+    FC1_mean = np.mean(quadratic)
+    FC1_sum = np.sum(quadratic)
+    return FC1_mean, FC1_sum
 
 
 # ==============================================================================
@@ -209,12 +183,10 @@ def FC_1(Returns, VaR):
 # ==============================================================================
 def FC_2(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    FC_2 = []
-    for i in range(len(VaR)):
-        quadratic = (np.abs(Compare.iloc[i, 0]) - np.abs(Compare.iloc[i, 1]) ** 2) / np.abs(Compare.iloc[i, 1])
-        FC_2.append(quadratic)
-        FC_2_Score = np.sum(FC_2)
-    return FC_2_Score
+    quadratic = (np.abs(Compare.iloc[:, 0]) - np.abs(Compare.iloc[:, 1]) ** 2) / np.abs(Compare.iloc[:, 1])
+    FC2_mean = np.mean(quadratic)
+    FC2_sum = np.sum(quadratic)
+    return FC2_mean, FC2_sum
 
 
 # ==============================================================================
@@ -224,12 +196,10 @@ def FC_2(Returns, VaR):
 # ==============================================================================
 def FC_3(Returns, VaR):
     Compare = pd.concat([Returns, VaR], axis=1)
-    FC_3 = []
-    for i in range(len(VaR)):
-        quadratic = np.abs(Compare.iloc[i, 1] - Compare.iloc[i, 0])
-        FC_3.append(quadratic)
-        FC_3_Score = np.sum(FC_3)
-    return FC_3_Score
+    quadratic = np.abs(Compare.iloc[:, 1] - Compare.iloc[:, 0])
+    FC3_mean = np.mean(quadratic)
+    FC3_sum = np.sum(quadratic)
+    return FC3_mean, FC3_sum
 
 
 # ==============================================================================
@@ -247,5 +217,5 @@ def QL(Returns, VaR, ConfidenceLevel):
         else:
             QuantileLoss = (Compare.iloc[:, 0][-i - 1:].quantile(1 - ConfidenceLevel) - Compare.iloc[i, 1]) ** 2
         QL.append(QuantileLoss)
-        QL_Score = np.sum(QL)
+    QL_Score = np.sum(QL)
     return QL_Score
