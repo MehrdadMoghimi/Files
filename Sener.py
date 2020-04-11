@@ -269,20 +269,18 @@ def plot_all(portfolio_returns, window_length, var_models):
         plot(test_returns, var_models[column].values, file_name=column)
 
 
-def predictive_ability_test(test_returns, var_models, benchmark='GARCH'):
+def predictive_ability_test(test_returns, var_models):
     var_models_error = var_models.subtract(test_returns, axis=0)
     # loss is a function of errors, it can be abs or power of 2
     var_models_loss = np.sqrt(np.power(var_models_error, 2))
-    # benchmark_loss = var_models_loss[benchmark]
-    # var_models_loss_wo_benchmark = var_models_loss.drop(columns=benchmark)
-    # kappa_1 = var_models_loss_wo_benchmark.subtract(benchmark_loss, axis=0)
     kappa = var_models_loss.div(np.sum(var_models_loss, axis=1), axis=0)
-    H_0 = np.mean(kappa, axis=0)
     W = np.sum(kappa > (1 / var_models_loss.shape[1]))
     p = 0.5
     T = var_models.shape[0]
     W_hat = (W - p * T) / np.sqrt(p * (1 - p) * T)
-    return 0
+    PAT = W_hat.to_frame(name='W_hat')
+    PAT['p-value'] = [st.norm.cdf(x) for x in PAT['W_hat']]
+    return PAT
 
 
 def plot(returns, VARs, file_name=None):
