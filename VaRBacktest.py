@@ -15,24 +15,20 @@ import numpy as np
 # UCoverage(Returns, Value at Risk, Confidence Level of VaR)
 # ==============================================================================
 
-def UCoverage(Returns, VaR, P):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+def UCoverage(Returns, VaR, ConfidenceLevel):
+    Compare = pd.concat([Returns, VaR], axis=1)
     Number_of_Fail = len(Compare[Compare.iloc[:, 0] < Compare.iloc[:, 1]])
     N = Number_of_Fail
     T = len(Compare)
     t = (1 - N / T) ** (T - N) * (N / T) ** N
-    c = ((P) ** (T - N)) * ((1 - P) ** N)
+    c = ((ConfidenceLevel) ** (T - N)) * ((1 - ConfidenceLevel) ** N)
     Likelihood_Ratio = 2 * np.log(t) - 2 * np.log(c)
     return Likelihood_Ratio
 
 
 # ==============================================================================
 def FailRate(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     Number_of_Fail = len(Compare[Compare.iloc[:, 0] < Compare.iloc[:, 1]])
     N = Number_of_Fail
     T = len(Compare)
@@ -46,9 +42,7 @@ def FailRate(Returns, VaR):
 # LRCCI(Returns, Value at Risk, Confidence Level of VaR)
 # ==============================================================================
 def LRCCI(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    LRCC = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    LRCC = pd.concat([Returns, VaR], axis=1)
     TF = LRCC.iloc[:, 0] > LRCC.iloc[:, 1]
     n00 = 0
     n10 = 0
@@ -86,9 +80,7 @@ def LRCCI(Returns, VaR):
 # RQL(Returns, Value at Risk)
 # ==============================================================================
 def RQL(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     RQL = []
     for i in range(len(VaR)):
         if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
@@ -106,9 +98,7 @@ def RQL(Returns, VaR):
 # RL(Returns, Value at Risk)
 # ==============================================================================
 def RL(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     RL = []
     for i in range(len(VaR)):
         if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
@@ -126,9 +116,7 @@ def RL(Returns, VaR):
 # RQ(Returns, Value at Risk)
 # ==============================================================================
 def RQ(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     RQ = []
     for i in range(len(VaR)):
         if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
@@ -146,9 +134,7 @@ def RQ(Returns, VaR):
 # RC_1(Returns, Value at Risk)
 # ==============================================================================
 def RC_1(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     RC_1 = []
     for i in range(len(VaR)):
         if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
@@ -166,9 +152,7 @@ def RC_1(Returns, VaR):
 # RC_2(Returns, Value at Risk)
 # ==============================================================================
 def RC_2(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     RC_2 = []
     for i in range(len(VaR)):
         if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
@@ -187,9 +171,7 @@ def RC_2(Returns, VaR):
 # RC_3(Returns, Value at Risk)
 # ==============================================================================
 def RC_3(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     RC_3 = []
     for i in range(len(VaR)):
         if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
@@ -211,9 +193,7 @@ def RC_3(Returns, VaR):
 # FC_1(Returns, Value at Risk)
 # ==============================================================================
 def FC_1(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     FC_1 = []
     for i in range(len(VaR)):
         quadratic = np.abs(1 - np.abs(Compare.iloc[i, 0] / Compare.iloc[i, 1]))
@@ -228,9 +208,7 @@ def FC_1(Returns, VaR):
 # FC_2(Returns, Value at Risk)
 # ==============================================================================
 def FC_2(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     FC_2 = []
     for i in range(len(VaR)):
         quadratic = (np.abs(Compare.iloc[i, 0]) - np.abs(Compare.iloc[i, 1]) ** 2) / np.abs(Compare.iloc[i, 1])
@@ -245,9 +223,7 @@ def FC_2(Returns, VaR):
 # FC_3(Returns, Value at Risk)
 # ==============================================================================
 def FC_3(Returns, VaR):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     FC_3 = []
     for i in range(len(VaR)):
         quadratic = np.abs(Compare.iloc[i, 1] - Compare.iloc[i, 0])
@@ -263,9 +239,7 @@ def FC_3(Returns, VaR):
 # Ql(Returns, Value at Risk, Condidence Level of VaR)
 # ==============================================================================
 def QL(Returns, VaR, ConfidenceLevel):
-    Time = len(Returns)
-    First_Windows = Time - len(VaR)
-    Compare = pd.concat([Returns[First_Windows:], -VaR], axis=1)
+    Compare = pd.concat([Returns, VaR], axis=1)
     QL = []
     for i in range(len(VaR)):
         if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
