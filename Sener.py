@@ -279,7 +279,7 @@ def predictive_ability_test(test_returns, var_models):
     T = var_models.shape[0]
     W_hat = (W - p * T) / np.sqrt(p * (1 - p) * T)
     PAT = W_hat.to_frame(name='W_hat')
-    PAT['p-value'] = [st.norm.cdf(x) for x in PAT['W_hat']]
+    PAT['p-value'] = [norm.cdf(x) for x in PAT['W_hat']]
     return PAT
 
 
