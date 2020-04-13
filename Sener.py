@@ -31,7 +31,9 @@ def violation_space_PM(returns, VARs):
 
 
 def penalization_measure(returns, VARs, alpha):
-    PM = ((1 - alpha / 100.0) * violation_space_PM(returns, VARs) + (alpha / 100.0) * safe_space_PM(returns, VARs)) / np.sum(returns < 0)
+    PM = ((1 - alpha / 100.0) * violation_space_PM(returns, VARs) + (alpha / 100.0) * safe_space_PM(returns,
+                                                                                                    VARs)) / np.sum(
+        returns < 0)
     return PM
 
 
@@ -117,15 +119,9 @@ def calculate_Var_Covar_VAR(portfolio_returns, window_length, alpha):
 
 
 def calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha):
-    forecast_std_risk_metric = np.zeros(portfolio_returns.shape[0])
-    forecast_std_risk_metric[0] = portfolio_returns[0]
     lambda_risk_metric = 0.94
-    print('\nRisk Metrics:')
-    for i in range(1, portfolio_returns.shape[0]):
-        progressBar(i, portfolio_returns.shape[0], bar_length=20)
-        forecast_std_risk_metric[i] = np.sqrt(
-            (1 - lambda_risk_metric) * portfolio_returns[i] ** 2 + lambda_risk_metric * forecast_std_risk_metric[
-                i - 1] ** 2)
+    forecast_std_risk_metric = pd.Series(portfolio_returns.squeeze()).ewm(alpha=1 - lambda_risk_metric).std().shift(
+        periods=1)
     forecast_std_test = forecast_std_risk_metric[window_length:]
     risk_metric_VaR = norm.ppf(alpha / 100.0) * forecast_std_test
     return risk_metric_VaR
@@ -196,7 +192,7 @@ def calculate_Filtered_Historical_VAR(portfolio_returns, window_length, alpha, f
         window = portfolio_returns[j:j + window_length]
         MEAN = forecast_mean_arima[j]
         STD = forecast_std_garch[j]
-        filtered_window = MEAN + (window - np.mean(window)) * (STD/np.std(window))
+        filtered_window = MEAN + (window - np.mean(window)) * (STD / np.std(window))
         f_hist_VaR[j] = np.percentile(filtered_window, alpha)
     return f_hist_VaR
 
@@ -241,15 +237,16 @@ def calculate_var_models(portfolio_returns, window_length, alpha, forecast_mean_
     # var_models['Var_Covar'] = calculate_Var_Covar_VAR(portfolio_returns, window_length, alpha)
     var_models['RiskMetrics'] = calculate_RiskMetrics_VAR(portfolio_returns, window_length, alpha)
     var_models['Historical'] = calculate_Historical_VAR(portfolio_returns, window_length, alpha)
-    var_models['F_Historical'] = calculate_Filtered_Historical_VAR(portfolio_returns, window_length, alpha, forecast_mean_arima, forecast_std_garch)
+    var_models['F_Historical'] = calculate_Filtered_Historical_VAR(portfolio_returns, window_length, alpha,
+                                                                   forecast_mean_arima, forecast_std_garch)
     var_models['MonteCarlo'] = calculate_MonteCarlo_VAR(alpha, forecast_mean_arima, forecast_std_garch)
     var_models['GARCH'] = calculate_GARCH_VAR(portfolio_returns, window_length, alpha)
-    # var_models['FIGARCH'] = calculate_FIGARCH_VAR(portfolio_returns, window_length, alpha)
     var_models['EGARCH'] = calculate_EGARCH_VAR(portfolio_returns, window_length, alpha)
+    # var_models['FIGARCH'] = calculate_FIGARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['ARCH'] = calculate_ARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['HARCH'] = calculate_HARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['TARCH'] = calculate_TARCH_VAR(portfolio_returns, window_length, alpha)
-    var_models['GJR_GARCH'] = calculate_GJR_GARCH_VAR(portfolio_returns, window_length, alpha)
+    # var_models['GJR_GARCH'] = calculate_GJR_GARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['EVT'] = calculate_EVT_VAR(portfolio_returns, window_length, alpha)
     return var_models
 
@@ -258,8 +255,10 @@ def calculate_var_models_pm(portfolio_returns, window_length, var_models, alpha)
     test_returns = portfolio_returns[window_length:]
     var_models_pm = pd.DataFrame(columns=['name', 'PM', 'ratio'])
     for column in var_models.columns:
-        var_models_pm = var_models_pm.append({'name': column, 'PM': penalization_measure(test_returns, var_models[column], alpha)}, ignore_index=True)
+        var_models_pm = var_models_pm.append(
+            {'name': column, 'PM': penalization_measure(test_returns, var_models[column], alpha)}, ignore_index=True)
     var_models_pm['ratio'] = var_models_pm['PM'] / sum(var_models_pm['PM'])
+    var_models_pm.set_index('name', inplace=True, drop=True)
     return var_models_pm
 
 
@@ -269,10 +268,12 @@ def plot_all(portfolio_returns, window_length, var_models):
         plot(test_returns, var_models[column].values, file_name=column)
 
 
-def predictive_ability_test(test_returns, var_models):
+def predictive_ability_test(test_returns, var_models, alpha):
     var_models_error = var_models.subtract(test_returns, axis=0)
     # loss is a function of errors, it can be abs or power of 2
-    var_models_loss = np.sqrt(np.power(var_models_error, 2))
+    # var_models_loss = np.sqrt(np.power(var_models_error, 2))
+    var_models_loss = ((np.repeat(test_returns.values.reshape(-1, 1), var_models.shape[1],
+                                  axis=1) < var_models) * 1 - alpha / 100) * var_models_error
     kappa = var_models_loss.div(np.sum(var_models_loss, axis=1), axis=0)
     W = np.sum(kappa > (1 / var_models_loss.shape[1]))
     p = 0.5
@@ -330,22 +331,3 @@ def progressBar(value, end_value, bar_length=20):
 
     sys.stdout.write("\rCompleted: [{0}] {1}%".format(arrow + spaces, int(round(percent * 100))))
     sys.stdout.flush()
-
-# import os
-# directory = os.getcwd()+'/data' #"C:\\Users\\ehsan\Desktop\Torronto Stocks Data\\"
-# rets = pd.read_csv(directory + "/returns_TSX.csv", header=0)
-# rets['date'] = pd.to_datetime(rets['date'])
-# rets = rets.set_index('date')
-# n, m = rets.shape
-# weights = np.ones((m, 1)) / m
-# portfolio_returns = np.dot(rets, weights).squeeze()
-# window_length = np.floor(0.875 * n).astype('int64')
-# alpha = 5
-# var_models, var_models_pm = calculate_ratios(portfolio_returns, window_length, alpha)
-
-# evar = pd.read_csv('evar.csv')
-# evar['date'] = pd.to_datetime(evar['date'])
-# evar = evar.set_index('date')
-# var_models['evar'] = pd.Series(evar['0'])
-
-# plot(test_returns, var_models['evar'].values, file_name='1.eVaR')
