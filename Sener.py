@@ -268,12 +268,17 @@ def plot_all(portfolio_returns, window_length, var_models):
         plot(test_returns, var_models[column].values, file_name=column)
 
 
-def predictive_ability_test(test_returns, var_models, alpha):
+def predictive_ability_test(test_returns, var_models, alpha, loss_func):
     var_models_error = var_models.subtract(test_returns, axis=0)
     # loss is a function of errors, it can be abs or power of 2
-    # var_models_loss = np.sqrt(np.power(var_models_error, 2))
-    var_models_loss = ((np.repeat(test_returns.values.reshape(-1, 1), var_models.shape[1],
-                                  axis=1) < var_models) * 1 - alpha / 100) * var_models_error
+    if loss_func=='mse':
+        var_models_loss = np.sqrt(np.power(var_models_error, 2))
+    elif loss_func=='abs':
+        var_models_loss = np.abs(var_models_error)
+    elif loss_func=='regulatory':   
+        var_models_loss = ((np.repeat(test_returns.values.reshape(-1, 1), var_models.shape[1], axis=1) < var_models) * 1 - alpha / 100) * var_models_error
+    else:
+        return "loss function must be one of mse, abs or regulatory"
     kappa = var_models_loss.div(np.sum(var_models_loss, axis=1), axis=0)
     W = np.sum(kappa > (1 / var_models_loss.shape[1]))
     p = 0.5
