@@ -100,6 +100,7 @@ def forecast_mean(portfolio_returns, window_length):
 
 
 def calculate_Var_Covar_VAR(returns, weights, window_length, test_len, alpha):
+    t = time.time()
     std_VaR = np.zeros(test_len)
     print('\nVar Covar:')
     for j in range(0, test_len):
@@ -110,34 +111,43 @@ def calculate_Var_Covar_VAR(returns, weights, window_length, test_len, alpha):
         avg_rets = window.mean()
         port_mean = avg_rets.dot(weights)
         port_stdev = np.sqrt(weights.T.dot(cov_matrix).dot(weights))
-        std_VaR = norm.ppf(alpha / 100.0, port_mean, port_stdev)
+        std_VaR[j] = norm.ppf(alpha / 100.0, port_mean, port_stdev)
+    print('\nVar_Covar time: {}'.format(round(time.time() - t, 2)))
     return std_VaR
 
 
 def calculate_RiskMetrics_VAR(returns, weights, test_len, alpha):
+    t = time.time()
     lambda_risk_metric = 0.94
     portfolio_returns = returns.dot(weights)
     forecast_std_risk_metric = pd.Series(portfolio_returns.squeeze()).ewm(alpha=1 - lambda_risk_metric).std().shift(periods=1)
     forecast_std_test = forecast_std_risk_metric[-test_len:]
     risk_metric_VaR = norm.ppf(alpha / 100.0) * forecast_std_test
+    print('\nRiskMetrics time: {}'.format(round(time.time() - t, 2)))
     return risk_metric_VaR
 
 
 def calculate_GARCH_VAR(returns, weights, window_length, test_len, alpha):
+    t = time.time()
     forecast_mean_garch, forecast_std_garch = forecast_std(returns, weights, window_length, test_len, volatility_model='GARCH')
     garch_VaR = forecast_mean_garch + norm.ppf(alpha / 100.0) * forecast_std_garch
+    print('\nGARCH time: {}'.format(round(time.time() - t, 2)))
     return garch_VaR
 
 
 def calculate_EGARCH_VAR(returns, weights, window_length, test_len, alpha):
+    t = time.time()
     forecast_mean_egarch, forecast_std_egarch = forecast_std(returns, weights, window_length, test_len, volatility_model='EGARCH')
     egarch_VaR = forecast_mean_egarch + norm.ppf(alpha / 100.0) * forecast_std_egarch
+    print('\nEGARCH time: {}'.format(round(time.time() - t, 2)))
     return egarch_VaR
 
 
 def calculate_GJR_GARCH_VAR(returns, weights, window_length, test_len, alpha):
+    t = time.time()
     forecast_mean_tarch, forecast_std_tarch = forecast_std(returns, weights, window_length, test_len, volatility_model='GJR-GARCH')
     harch_VaR = forecast_mean_tarch + norm.ppf(alpha / 100.0) * forecast_std_tarch
+    print('\nGJR GARCH time: {}'.format(round(time.time() - t, 2)))
     return harch_VaR
 
 
