@@ -1,4 +1,3 @@
-from Cython.Includes.libcpp.memory import weak_ptr
 from scipy.ndimage.measurements import label
 import numpy as np
 from scipy.stats import norm
