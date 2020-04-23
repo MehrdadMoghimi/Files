@@ -235,8 +235,7 @@ def calculate_var_models(returns, weights, window_length, test_len, alpha, forec
     return var_models
 
 
-def calculate_var_models_pm(portfolio_returns, window_length, var_models, alpha):
-    test_returns = portfolio_returns[window_length:]
+def calculate_var_models_pm(test_returns, var_models, alpha):
     var_models_pm = pd.DataFrame(columns=['name', 'PM', 'ratio'])
     for column in var_models.columns:
         var_models_pm = var_models_pm.append(
@@ -246,8 +245,7 @@ def calculate_var_models_pm(portfolio_returns, window_length, var_models, alpha)
     return var_models_pm
 
 
-def plot_all(portfolio_returns, window_length, var_models):
-    test_returns = portfolio_returns[window_length:]
+def plot_all(test_returns, var_models):
     for column in var_models.columns:
         plot(test_returns, var_models[column].values, file_name=column)
 
