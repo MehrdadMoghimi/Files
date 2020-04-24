@@ -209,13 +209,12 @@ def FC_3(Returns, VaR):
 # Ql(Returns, Value at Risk, Condidence Level of VaR)
 # ==============================================================================
 def QL(Returns, VaR, ConfidenceLevel):
-    Compare = pd.concat([Returns, VaR], axis=1)
     QL = []
     for i in range(len(VaR)):
-        if Compare.iloc[i, 0] < Compare.iloc[i, 1]:
-            QuantileLoss = (Compare.iloc[i, 0] - Compare.iloc[i, 1]) ** 2
+        if Returns[i] < VaR[i]:
+            QuantileLoss = (Returns[i] - VaR[i]) ** 2
         else:
-            QuantileLoss = (Compare.iloc[:, 0][-i - 1:].quantile(1 - ConfidenceLevel) - Compare.iloc[i, 1]) ** 2
+            QuantileLoss = (Returns[i + 1:].quantile(1 - ConfidenceLevel) - VaR[i]) ** 2
         QL.append(QuantileLoss)
     QL_Score = np.sum(QL)
     return QL_Score
