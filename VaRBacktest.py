@@ -210,11 +210,12 @@ def FC_3(Returns, VaR):
 # ==============================================================================
 def QL(Returns, VaR, ConfidenceLevel):
     QL = []
-    for i in range(len(VaR)):
+    for i in range(len(VaR)-1):
         if Returns[i] < VaR[i]:
             QuantileLoss = (Returns[i] - VaR[i]) ** 2
         else:
             QuantileLoss = (Returns[i + 1:].quantile(1 - ConfidenceLevel) - VaR[i]) ** 2
         QL.append(QuantileLoss)
+    QL.append((Returns[-1] - VaR[-1]) ** 2)
     QL_Score = np.sum(QL)
     return QL_Score
