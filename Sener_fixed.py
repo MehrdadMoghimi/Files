@@ -223,8 +223,8 @@ def calculate_var_models(returns, weights, window_length, test_len, alpha, forec
     # var_models['CAViaR_Asym'] = calculate_CAViaR_Asym_VAR(portfolio_returns, window_length, alpha)
     # var_models['CAViaR_indirect_GARCH'] = calculate_CAViaR_indirect_GARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['CAViaR_adaptive'] = calculate_CAViaR_adaptive_VAR(portfolio_returns, window_length, alpha)
-    var_models['RiskMetrics'] = calculate_RiskMetrics_VAR(returns, weights, test_len, alpha)
     var_models['Var_Covar'] = calculate_Var_Covar_VAR(returns, weights, window_length, test_len, alpha)
+    var_models['RiskMetrics'] = calculate_RiskMetrics_VAR(returns, weights, test_len, alpha)
     # var_models['Historical'] = calculate_Historical_VAR(returns, weights, window_length, test_len, alpha)
     var_models['F_Historical'] = calculate_Filtered_Historical_VAR(returns, weights, window_length, test_len, alpha, forecast_mean, forecast_std)
     var_models['MonteCarlo'] = calculate_MonteCarlo_VAR(returns, weights, window_length, test_len, alpha)
@@ -258,10 +258,22 @@ def predictive_ability_test(test_returns, var_models, alpha, loss_func):
     elif loss_func == 'abs':
         var_models_loss = np.abs(var_models_error)
     elif loss_func == 'regulatory':
-        var_models_loss = ((np.repeat(test_returns.values.reshape(-1, 1), var_models.shape[1],
-                                      axis=1) < var_models) * 1 - alpha / 100) * var_models_error
+        var_models_loss = ((np.repeat(test_returns.values.reshape(-1, 1), var_models.shape[1], axis=1) < var_models) * 1 - alpha / 100) * var_models_error
+    elif loss_func == 'quantile':
+        var_models_loss = pd.DataFrame(index=var_models.index, columns=var_models.columns)
+        for column in var_models.columns:
+            var_model = var_models[column]
+            QL = []
+            for i in range(len(var_model) - 1):
+                if test_returns[i] < var_model[i]:
+                    QuantileLoss = (test_returns[i] - var_model[i]) ** 2
+                else:
+                    QuantileLoss = (test_returns[i + 1:].quantile(alpha / 100) - var_model[i]) ** 2
+                QL.append(QuantileLoss)
+            QL.append((test_returns[-1] - var_model[-1]) ** 2)
+            var_models_loss[column] = QL
     else:
-        return "loss function must be one of mse, abs or regulatory"
+        return "loss function must be one of quantile, mse, abs or regulatory"
     kappa = var_models_loss.div(np.sum(var_models_loss, axis=1), axis=0)
     W = np.sum(kappa > (1 / var_models_loss.shape[1]))
     p = 0.5
