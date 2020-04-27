@@ -292,10 +292,12 @@ def plot(returns, VARs, file_name=None):
     sns.set_context("paper")
     sns.set_style("whitegrid", {"font.family": "serif", "font.serif": "Computer Modern Roman", "text.usetex": True})
 
-    ax = plt.gca()
+    fig, ax = plt.subplots(figsize=(14, 6), linewidth=7, edgecolor="#04253a")
+    ax.tick_params(axis='x', labelsize=14)
+    ax.tick_params(axis='y', labelsize=14)
     # Hits
     if len(r[r <= q]) > 0:
-        r[r <= q].plot(ax=ax, color="red", marker="o", ls="None", figsize=(12, 7))
+        r[r <= q].plot(ax=ax, color="red", marker="o", ls="None")
         for h in r[r <= q].index:
             plt.axvline(h, color="black", alpha=0.4, linewidth=1, zorder=0)
 
@@ -312,15 +314,15 @@ def plot(returns, VARs, file_name=None):
 
     # Axes
     plt.xlabel("")
-    plt.ylabel("Return")
+    plt.ylabel("")
     # ax.yaxis.grid()
-    plt.title(file_name)
+    # plt.title(file_name)
 
     sns.despine()
     if file_name is None:
         plt.show()
     else:
-        plt.savefig(file_name + '.png', bbox_inches="tight")
+        plt.savefig(file_name + '.png', bbox_inches="tight", edgecolor=fig.get_edgecolor())
     plt.close("all")
 
 
