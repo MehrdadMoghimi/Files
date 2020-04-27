@@ -292,7 +292,8 @@ def plot(returns, VARs, file_name=None):
     sns.set_context("paper")
     sns.set_style("whitegrid", {"font.family": "serif", "font.serif": "Computer Modern Roman", "text.usetex": True})
 
-    fig, ax = plt.subplots(figsize=(14, 6), linewidth=7, edgecolor="#04253a")
+    fig, ax = plt.subplots(figsize=(14, 6))
+    ax = fig.add_axes((1, 1, 1, 1))
     ax.tick_params(axis='x', labelsize=14)
     ax.tick_params(axis='y', labelsize=14)
     # Hits
@@ -322,7 +323,7 @@ def plot(returns, VARs, file_name=None):
     if file_name is None:
         plt.show()
     else:
-        plt.savefig(file_name + '.png', bbox_inches="tight", edgecolor=fig.get_edgecolor())
+        plt.savefig(file_name + '.png', bbox_inches="tight")
     plt.close("all")
 
 
