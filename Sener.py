@@ -293,17 +293,13 @@ def plot(returns, VARs, file_name=None):
     sns.set_style("whitegrid", {"font.family": "serif", "font.serif": "Computer Modern Roman", "text.usetex": True})
 
     fig, ax = plt.subplots(figsize=(14, 6))
-    ax.spines["top"].set_visible(True)
-    ax.spines["top"].set_linewidth(3)
+    ax.spines["top"].set_linewidth(2)
     ax.spines["top"].set_color("black")
-    ax.spines["bottom"].set_visible(True)
-    ax.spines["bottom"].set_linewidth(3)
+    ax.spines["bottom"].set_linewidth(2)
     ax.spines["bottom"].set_color("black")
-    ax.spines["left"].set_visible(True)
-    ax.spines["left"].set_linewidth(3)
+    ax.spines["left"].set_linewidth(2)
     ax.spines["left"].set_color("black")
-    ax.spines["right"].set_visible(True)
-    ax.spines["right"].set_linewidth(3)
+    ax.spines["right"].set_linewidth(2)
     ax.spines["right"].set_color("black")
     ax.tick_params(axis='x', labelsize=14)
     ax.tick_params(axis='y', labelsize=14)
@@ -330,7 +326,7 @@ def plot(returns, VARs, file_name=None):
     # ax.yaxis.grid()
     # plt.title(file_name)
 
-    sns.despine()
+    #sns.despine()
     if file_name is None:
         plt.show()
     else:
