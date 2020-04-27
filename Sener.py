@@ -293,7 +293,10 @@ def plot(returns, VARs, file_name=None):
     sns.set_style("whitegrid", {"font.family": "serif", "font.serif": "Computer Modern Roman", "text.usetex": True})
 
     fig, ax = plt.subplots(figsize=(14, 6))
-    ax = fig.add_axes((1, 1, 1, 1))
+    ax.spines["top"].set_linewidth(4)
+    ax.spines["bottom"].set_linewidth(4)
+    ax.spines["left"].set_linewidth(4)
+    ax.spines["right"].set_linewidth(4)
     ax.tick_params(axis='x', labelsize=14)
     ax.tick_params(axis='y', labelsize=14)
     # Hits
