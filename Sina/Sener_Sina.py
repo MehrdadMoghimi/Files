@@ -229,7 +229,7 @@ def calculate_var_models(returns, weights, window_length, test_len, alpha, forec
     var_models['Filtered Historical'] = calculate_Filtered_Historical_VAR(returns, weights, window_length, test_len, alpha, forecast_mean, forecast_std)
     var_models['Monte Carlo'] = calculate_MonteCarlo_VAR(returns, weights, window_length, test_len, alpha)
     var_models['GARCH'] = calculate_GARCH_VAR(returns, weights, window_length, test_len, alpha)
-    var_models['E-GARCH'] = calculate_EGARCH_VAR(returns, weights, round(2.67*window_length), test_len, alpha)
+    var_models['E-GARCH'] = calculate_EGARCH_VAR(returns, weights, 4*window_length, test_len, alpha)
     # var_models['GJR_GARCH'] = calculate_GJR_GARCH_VAR(portfolio_returns, window_length, alpha)
     # var_models['EVT'] = calculate_EVT_VAR(portfolio_returns, window_length, alpha)
     return var_models
