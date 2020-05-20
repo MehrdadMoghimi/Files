@@ -250,13 +250,25 @@ def plot_all(test_returns, var_models):
         plot(test_returns.values, var_models[column].values, file_name=column)
 
 
-def predictive_ability_test(test_returns, var_models, alpha, loss_func):
+def predictive_ability_test(test_returns, var_models, alpha, loss_func, beta=0.001):
     var_models_error = var_models.subtract(test_returns, axis=0)
     # loss is a function of errors, it can be abs or power of 2
     if loss_func == 'mse':
-        var_models_loss = np.sqrt(np.power(var_models_error, 2))
+        var_models_loss = np.power(var_models_error, 2)
     elif loss_func == 'abs':
         var_models_loss = np.abs(var_models_error)
+    elif loss_func == 'sarma':
+        var_models_loss = pd.DataFrame(index=var_models.index, columns=var_models.columns)
+        for column in var_models.columns:
+            var_model = var_models[column]
+            sarma = []
+            for i in range(len(var_model)):
+                if test_returns[i] < var_model[i]:
+                    sarmaLoss = (test_returns[i] - var_model[i]) ** 2
+                else:
+                    sarmaLoss = beta*np.abs(test_returns[i] - var_model[i])
+                sarma.append(sarmaLoss)
+            var_models_loss[column] = sarma
     elif loss_func == 'regulatory':
         var_models_loss = ((np.repeat(test_returns.values.reshape(-1, 1), var_models.shape[1], axis=1) < var_models) * 1 - alpha / 100) * var_models_error
     elif loss_func == 'quantile':
