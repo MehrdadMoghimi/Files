@@ -304,7 +304,7 @@ def plot(returns, VARs, file_name=None):
     sns.set_context("paper")
     sns.set_style("whitegrid", {"font.family": "serif", "font.serif": "Computer Modern Roman", "text.usetex": True})
 
-    fig, ax = plt.subplots(figsize=(14, 6))
+    fig, ax = plt.subplots(figsize=(18, 6))
     ax.spines["top"].set_linewidth(2)
     ax.spines["top"].set_color("black")
     ax.spines["bottom"].set_linewidth(2)
