@@ -245,9 +245,9 @@ def calculate_var_models_pm(test_returns, var_models, alpha):
     return var_models_pm
 
 
-def plot_all(test_returns, var_models):
+def plot_all(test_returns, var_models, ratio=1.6):
     for column in var_models.columns:
-        plot(test_returns.values, var_models[column].values, file_name=column)
+        plot(test_returns.values, var_models[column].values, file_name=column, ratio=ratio)
 
 
 def predictive_ability_test(test_returns, var_models, alpha, loss_func, beta=0.001):
