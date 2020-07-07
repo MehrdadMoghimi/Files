@@ -296,7 +296,7 @@ def predictive_ability_test(test_returns, var_models, alpha, loss_func, beta=0.0
     return PAT
 
 
-def plot(returns, VARs, file_name=None):
+def plot(returns, VARs, file_name=None, ratio=1.6):
     # Re-add the time series index
     r = pd.Series(returns.squeeze())
     q = pd.Series(VARs.squeeze())
@@ -304,7 +304,7 @@ def plot(returns, VARs, file_name=None):
     sns.set_context("paper")
     sns.set_style("whitegrid", {"font.family": "serif", "font.serif": "Computer Modern Roman", "text.usetex": True})
 
-    fig, ax = plt.subplots(figsize=(18, 6))
+    fig, ax = plt.subplots(figsize=(10*ratio, 10))
     ax.spines["top"].set_linewidth(2)
     ax.spines["top"].set_color("black")
     ax.spines["bottom"].set_linewidth(2)
@@ -313,8 +313,12 @@ def plot(returns, VARs, file_name=None):
     ax.spines["left"].set_color("black")
     ax.spines["right"].set_linewidth(2)
     ax.spines["right"].set_color("black")
-    ax.tick_params(axis='x', labelsize=14)
-    ax.tick_params(axis='y', labelsize=14)
+    ax.tick_params(axis='x', labelsize=20)
+    ax.tick_params(axis='y', labelsize=20) 
+    ax.set_xlabel('Days', fontsize=20)
+    ax.set_ylabel('Returns', fontsize=20)
+    ax.grid(False)
+    
     # Hits
     if len(r[r <= q]) > 0:
         r[r <= q].plot(ax=ax, color="red", marker="o", ls="None")
@@ -331,18 +335,14 @@ def plot(returns, VARs, file_name=None):
 
     # VaR
     q.plot(ax=ax, grid=False, color="black", rot=0)
-
-    # Axes
-    plt.xlabel("")
-    plt.ylabel("")
-    # ax.yaxis.grid()
-    # plt.title(file_name)
-
+    
+    plt.tight_layout()
+    
     #sns.despine()
     if file_name is None:
         plt.show()
     else:
-        plt.savefig(file_name + '.png', bbox_inches="tight")
+        plt.savefig(file_name + '.pdf', dpi=300)
     plt.close("all")
 
 
