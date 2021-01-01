@@ -1,0 +1,2130 @@
+{
+    "bourseview": {
+        "items": [
+            {
+                "code": 10,
+                "items": [
+                    {
+                        "code": 1010,
+                        "industryIndex": "IREXAGRICULTURALCHEMICALS",
+                        "name": "Agricultural Chemicals",
+                        "nameFA": "تولید کود و ترکیبات نیتروژن"
+                    },
+                    {
+                        "code": 1020,
+                        "industryIndex": "IREXCHEMICALSDIVERSIFIED",
+                        "name": "Chemicals Diversified",
+                        "nameFA": "مواد شیمیایی-متنوع"
+                    },
+                    {
+                        "code": 1030,
+                        "industryIndex": "IREXCOAL",
+                        "name": "Coal",
+                        "nameFA": "زغال سنگ"
+                    },
+                    {
+                        "code": 1040,
+                        "industryIndex": "IREXMETALLICORES",
+                        "name": "Metallic Ores",
+                        "nameFA": "کانی های فلزی"
+                    },
+                    {
+                        "code": 1050,
+                        "industryIndex": "IREXMETALSEXIRON",
+                        "name": "Metals Ex. Iron",
+                        "nameFA": "تولید فلزات گرانبهای غیر آهن"
+                    },
+                    {
+                        "code": 1060,
+                        "industryIndex": "IREXOTHERMINERALS",
+                        "name": "Other Minerals",
+                        "nameFA": "سایر مواد معدنی"
+                    },
+                    {
+                        "code": 1070,
+                        "industryIndex": "IREXPAPERPRODUCTS",
+                        "name": "Paper Products",
+                        "nameFA": "محصولات کاغذی"
+                    },
+                    {
+                        "code": 1080,
+                        "industryIndex": "IREXSTEELIRON",
+                        "name": "Steel & Iron",
+                        "nameFA": "اهن و فولاد"
+                    },
+                    {
+                        "code": 1090,
+                        "industryIndex": "IREXWOOD",
+                        "name": "Wood",
+                        "nameFA": "چوب"
+                    },
+                    {
+                        "code": 10100,
+                        "industryIndex": "IREXFORESTRYANDFISHING",
+                        "name": "Forestry and Fishing",
+                        "nameFA": "جنگلداری و ماهیگیری"
+                    }
+                ],
+                "name": "Basic Materials",
+                "nameFA": "مواد پایه"
+            },
+            {
+                "code": 20,
+                "items": [
+                    {
+                        "code": 2010,
+                        "industryIndex": "IREXMOTORCYCLEMANUFACTURER",
+                        "name": "Motorcycle Manufacturer",
+                        "nameFA": "تولید موتور سیکلت"
+                    },
+                    {
+                        "code": 2020,
+                        "industryIndex": "IREXAPPLIANCES",
+                        "name": "Appliances",
+                        "nameFA": "وسایل خانگی"
+                    },
+                    {
+                        "code": 2030,
+                        "industryIndex": "IREXAUTOMANUFACTURERS",
+                        "name": "Auto Manufacturers",
+                        "nameFA": "خودرو"
+                    },
+                    {
+                        "code": 2040,
+                        "industryIndex": "IREXAUTOPARTS",
+                        "name": "Auto Parts",
+                        "nameFA": "قطعات خودرو"
+                    },
+                    {
+                        "code": 2050,
+                        "industryIndex": "IREXAUTOWHOLESALERRETAILER",
+                        "name": "Auto wholesaler & Retailer",
+                        "nameFA": "تجارت عمده وخرده فروشی وسائط نقلیه موتور"
+                    },
+                    {
+                        "code": 2060,
+                        "industryIndex": "IREXCLEANINGPRODUCT",
+                        "name": "Cleaning Product",
+                        "nameFA": "محصولات پاک کننده"
+                    },
+                    {
+                        "code": 2070,
+                        "industryIndex": "IREXFURNITURE ",
+                        "name": "Furniture",
+                        "nameFA": "مبلمان و مصنوعات دیگر"
+                    },
+                    {
+                        "code": 2080,
+                        "industryIndex": "IREXLEATHER",
+                        "name": "Leather",
+                        "nameFA": "چرم"
+                    },
+                    {
+                        "code": 2090,
+                        "industryIndex": "IREXPUBLISHING",
+                        "name": "Publishing",
+                        "nameFA": "چاپ و نشر"
+                    },
+                    {
+                        "code": 20100,
+                        "industryIndex": "IREXRUBBERPLASTICS",
+                        "name": "Rubber & Plastics",
+                        "nameFA": "لاستیک و پلاستیک"
+                    },
+                    {
+                        "code": 20110,
+                        "industryIndex": "IREXTEXTILE",
+                        "name": "Textile",
+                        "nameFA": "نساجی"
+                    },
+                    {
+                        "code": 20120,
+                        "industryIndex": "IREXHOTELSRESTAURANTS",
+                        "name": "Hotels & Restaurants",
+                        "nameFA": "هتل و رستوران"
+                    },
+                    {
+                        "code": 201001,
+                        "industryIndex": "IREXADVERTISING",
+                        "name": "Advertising",
+                        "nameFA": "تبلیغات"
+                    }
+                ],
+                "name": "Consumer Cyclical",
+                "nameFA": "مصرفی دوره ای"
+            },
+            {
+                "code": 30,
+                "items": [
+                    {
+                        "code": 3010,
+                        "industryIndex": "IREXBEVERAGESOFTDRINKS",
+                        "name": "Beverage Soft Drinks",
+                        "nameFA": "نوشیدنی"
+                    },
+                    {
+                        "code": 3020,
+                        "industryIndex": "IREXCONFECTIONERS",
+                        "name": "Confectioners",
+                        "nameFA": "شیرینیجات"
+                    },
+                    {
+                        "code": 3030,
+                        "industryIndex": "IREXDAIRY",
+                        "name": "Dairy",
+                        "nameFA": "محصولات لبنی"
+                    },
+                    {
+                        "code": 3040,
+                        "industryIndex": "IREXFARMPRODUCTS",
+                        "name": "Farming and animal husbandry",
+                        "nameFA": "محصولات کشاورزی و دامپروری"
+                    },
+                    {
+                        "code": 3050,
+                        "industryIndex": "IREXGROCERYSTORES",
+                        "name": "Grocery Stores",
+                        "nameFA": "خرده فروشی،باستثنای وسایل نقلیه موتوری"
+                    },
+                    {
+                        "code": 3060,
+                        "industryIndex": "IREXOTHERFOODPRODUCTS",
+                        "name": "Other Food Products",
+                        "nameFA": "سایر محصولات غذایی"
+                    },
+                    {
+                        "code": 3070,
+                        "industryIndex": "IREXSUGAR",
+                        "name": "Sugar",
+                        "nameFA": "شکر"
+                    }
+                ],
+                "name": "Consumer Non Cyclical",
+                "nameFA": "مصرفی غیردوره ای"
+            },
+            {
+                "code": 40,
+                "items": [
+                    {
+                        "code": 4010,
+                        "industryIndex": "IREXAIRPORTSAIRSERVICES",
+                        "name": "Airports & Air Services",
+                        "nameFA": "حمل و نقل هوایی"
+                    },
+                    {
+                        "code": 4020,
+                        "industryIndex": "IREXINDUSTRIALCONTRACTING",
+                        "name": "Industrial Contracting",
+                        "nameFA": "پیمانکاری صنعتی"
+                    },
+                    {
+                        "code": 4030,
+                        "industryIndex": "IREXCEMENT",
+                        "name": "Cement",
+                        "nameFA": "سیمان، اهک و گچ"
+                    },
+                    {
+                        "code": 4040,
+                        "industryIndex": "IREXENGINEERING",
+                        "name": "Engineering",
+                        "nameFA": "فعالیت مهندسی"
+                    },
+                    {
+                        "code": 4050,
+                        "industryIndex": "IREXOTHERNONMETALLICPRODUCTS",
+                        "name": "Other Non Metallic Products",
+                        "nameFA": "سایر محصولات کانی غیرفلزی"
+                    },
+                    {
+                        "code": 4060,
+                        "industryIndex": "IREXOTHERTRANSPORTATIONSERVICES",
+                        "name": "Other Transportation Services",
+                        "nameFA": "سایر فعالیت های پشتیبانی و حمل و نقل"
+                    },
+                    {
+                        "code": 4070,
+                        "industryIndex": "IREXRAILROADS",
+                        "name": "Railroads",
+                        "nameFA": "حمل و نقل از طریق خطوط راه اهن"
+                    },
+                    {
+                        "code": 4080,
+                        "industryIndex": "IREXSHIPPINGPORTS",
+                        "name": "Shipping & Ports",
+                        "nameFA": "بنادر و کشتیرانی"
+                    },
+                    {
+                        "code": 4090,
+                        "industryIndex": "IREXTRUCKING",
+                        "name": "Trucking",
+                        "nameFA": "حمل و نقل بار زمینی"
+                    },
+                    {
+                        "code": 40100,
+                        "industryIndex": "IREXELECTRICALMACHINERY",
+                        "name": "Electrical Machinery",
+                        "nameFA": "ماشین الات الکتریکی"
+                    },
+                    {
+                        "code": 40110,
+                        "industryIndex": "IREXHEAVYCUNSTRUCTION",
+                        "name": "Heavy Construction",
+                        "nameFA": "ماشین الات و قطعات سنگین"
+                    },
+                    {
+                        "code": 40120,
+                        "industryIndex": "IREXINDUSTRIALEQUIPMENTCOMPONENTS",
+                        "name": "Industrial Equipment & Components",
+                        "nameFA": "تجهیزات صنعتی"
+                    },
+                    {
+                        "code": 40130,
+                        "industryIndex": "IREXMACHINERY",
+                        "name": "Machinery",
+                        "nameFA": "ماشین الات"
+                    },
+                    {
+                        "code": 40140,
+                        "industryIndex": "IREXMETALLICPRODUCTS",
+                        "name": "Metallic Products",
+                        "nameFA": "محصولات فلزی"
+                    },
+                    {
+                        "code": 40150,
+                        "industryIndex": "IREXTILE",
+                        "name": "Tile",
+                        "nameFA": "کاشی و سرامیک"
+                    }
+                ],
+                "name": "Industrials",
+                "nameFA": "صنعتی"
+            },
+            {
+                "code": 50,
+                "items": [
+                    {
+                        "code": 5010,
+                        "industryIndex": "IREXWHOLESALING",
+                        "name": "Wholesaling",
+                        "nameFA": "تجارت عمده فروشی به جز وسایل نقلیه موتور"
+                    },
+                    {
+                        "code": 5020,
+                        "industryIndex": "IREXBANKSCREDITINSTITUTIONS",
+                        "name": "Banks & Credit Institutions",
+                        "nameFA": "بانکها و موسسات اعتباری"
+                    },
+                    {
+                        "code": 5030,
+                        "industryIndex": null,
+                        "name": "Bond",
+                        "nameFA": "اوراق تامین مالی"
+                    },
+                    {
+                        "code": 5040,
+                        "industryIndex": null,
+                        "name": "ETF",
+                        "nameFA": "صندوق سرمایه گذاری قابل معامله"
+                    },
+                    {
+                        "code": 5050,
+                        "industryIndex": null,
+                        "name": "Exchanges & Exchange Related",
+                        "nameFA": "فعالیتهای مرتبط با اوراق بهادار"
+                    },
+                    {
+                        "code": 5060,
+                        "industryIndex": "IREXINSURANCEDIVERSIFIED",
+                        "name": "Insurance Diversified",
+                        "nameFA": "بیمه"
+                    },
+                    {
+                        "code": 5070,
+                        "industryIndex": "IREXINTELLECTUALASSETS",
+                        "name": "Intellectual Assets",
+                        "nameFA": "اوراق بهادار مبتنی بر دارایی فکری"
+                    },
+                    {
+                        "code": 5080,
+                        "industryIndex": "IREXINVESTMENTS",
+                        "name": "Investments",
+                        "nameFA": "سرمایه گذاری"
+                    },
+                    {
+                        "code": 5090,
+                        "industryIndex": "IREXLEASING",
+                        "name": "Leasing",
+                        "nameFA": "لیزینگ"
+                    },
+                    {
+                        "code": 50100,
+                        "industryIndex": null,
+                        "name": "Housing Mortgage Right ",
+                        "nameFA": "امتیاز تسهیلات مسکن"
+                    }
+                ],
+                "name": "Financial Services",
+                "nameFA": "خدمات مالی"
+            },
+            {
+                "code": 60,
+                "items": [
+                    {
+                        "code": 6010,
+                        "industryIndex": "IREXIT",
+                        "name": "Software & Services",
+                        "nameFA": "نرم افزار و خدمات"
+                    },
+                    {
+                        "code": 6011,
+                        "industryIndex": "IREXTECHNOLOGYHARDWAREEQUIPMENT",
+                        "name": "Technology Hardware & Equipment",
+                        "nameFA": "سخت افزار و تجهیزات"
+                    },
+                    {
+                        "code": 6020,
+                        "industryIndex": "IREXCOMMUNICATIONEQUIPMENT",
+                        "name": "Communication Equipment",
+                        "nameFA": "تجهیزات مخابراتی"
+                    },
+                    {
+                        "code": 6030,
+                        "industryIndex": "IREXMETERINSTRUMENTS",
+                        "name": "Meter Instruments",
+                        "nameFA": "وسایل اندازه گیری غیر از کنترل صنعتی"
+                    }
+                ],
+                "name": "Technology",
+                "nameFA": "تکنولوژی"
+            },
+            {
+                "code": 70,
+                "items": [
+                    {
+                        "code": 7010,
+                        "industryIndex": "IREXDIVERSIFIEDUTILITIES",
+                        "name": "Diversified Utilities",
+                        "nameFA": "خدمات رفاهی متنوع"
+                    },
+                    {
+                        "code": 7020,
+                        "industryIndex": "IREXELECTRICUTILITIES",
+                        "name": "Electric Utilities",
+                        "nameFA": "خدمات رفاهی-برق"
+                    },
+                    {
+                        "code": 7030,
+                        "industryIndex": "IREXWATERUTILITIES",
+                        "name": "Water Utilities",
+                        "nameFA": "خدمات رفاهی-اب"
+                    }
+                ],
+                "name": "Utilities",
+                "nameFA": "خدمات رفاهی"
+            },
+            {
+                "code": 80,
+                "items": [
+                    {
+                        "code": 8010,
+                        "industryIndex": "IREXDRILLING",
+                        "name": "Drilling",
+                        "nameFA": "حفاری"
+                    },
+                    {
+                        "code": 8020,
+                        "industryIndex": "IREXPETROLEUMPRODUCTS",
+                        "name": "Petroleum Products",
+                        "nameFA": "فراورده های نفتی"
+                    }
+                ],
+                "name": "Energy",
+                "nameFA": "انرژی"
+            },
+            {
+                "code": 90,
+                "items": [
+                    {
+                        "code": 9010,
+                        "industryIndex": "IREXTELECOMSERVICES",
+                        "name": "Telecom Services",
+                        "nameFA": "مخابرات"
+                    }
+                ],
+                "name": "Communication Services",
+                "nameFA": "خدمات ارتباطی"
+            },
+            {
+                "code": 100,
+                "items": [
+                    {
+                        "code": 10010,
+                        "industryIndex": "IREXPHARMACEUTICALS",
+                        "name": "Pharmaceuticals",
+                        "nameFA": "دارویی"
+                    }
+                ],
+                "name": "Healthcare",
+                "nameFA": "بهداشتی"
+            },
+            {
+                "code": 110,
+                "items": [
+                    {
+                        "code": 11010,
+                        "industryIndex": "IREXCONSTRUCTION",
+                        "name": "Construction",
+                        "nameFA": "انبوه سازی، املاک و مستغلات"
+                    }
+                ],
+                "name": "Real Estate",
+                "nameFA": "املاک و مستغلات"
+            }
+        ]
+    },
+    "help": "List of industries",
+    "hits": 0,
+    "href": "http://api.bourseview.com/v1/industries",
+    "tse": {
+        "items": [
+            {
+                "code": 1,
+                "industryIndex": "IRX6X01T0006",
+                "items": [
+                    {
+                        "code": 111,
+                        "name": "",
+                        "nameFA": "پرورش محصولات و باغبانی"
+                    },
+                    {
+                        "code": 121,
+                        "name": "",
+                        "nameFA": "كشاورزی، دامپروری و خدمات وابسته"
+                    },
+                    {
+                        "code": 140,
+                        "name": "",
+                        "nameFA": "كشاورزی و خدمات دامپروری جز دامپزشكی"
+                    },
+                    {
+                        "code": 141,
+                        "name": "",
+                        "nameFA": "پرورش طیور"
+                    },
+                    {
+                        "code": 142,
+                        "name": "",
+                        "nameFA": "پرورش حیوانات وتولید سایر محصولات حیوانی"
+                    },
+                    {
+                        "code": 161,
+                        "name": "",
+                        "nameFA": "فعالیتهای حمایتی تولید محصولات"
+                    }
+                ],
+                "name": "Coal",
+                "nameFA": "زراعت و خدمات وابسته"
+            },
+            {
+                "code": 2,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 210,
+                        "name": "",
+                        "nameFA": "جنگل شناسی و دیگر فعالیتهای جنگلداری"
+                    }
+                ],
+                "name": "",
+                "nameFA": "زراعت و خدمات وابسته"
+            },
+            {
+                "code": 10,
+                "industryIndex": "IRX6X10T0006",
+                "items": [
+                    {
+                        "code": 1010,
+                        "name": "",
+                        "nameFA": "استخراج و انبار زغال سنگ سخت"
+                    }
+                ],
+                "name": "Coal",
+                "nameFA": "استخراج ذغال سنگ"
+            },
+            {
+                "code": 11,
+                "industryIndex": "IRX6X11T0006",
+                "items": [
+                    {
+                        "code": 1110,
+                        "name": "",
+                        "nameFA": "استخراج نفت خام وگاز طبیعی"
+                    },
+                    {
+                        "code": 1120,
+                        "name": "",
+                        "nameFA": "خدمات جنبی استخراج نفت گاز جز اکتشاف"
+                    }
+                ],
+                "name": "Drilling",
+                "nameFA": "استخراج نفت گاز و خدمات جنبی جز اکتشاف"
+            },
+            {
+                "code": 13,
+                "industryIndex": "IRX6X13T0006",
+                "items": [
+                    {
+                        "code": 1310,
+                        "name": "",
+                        "nameFA": "استخراج آهن"
+                    },
+                    {
+                        "code": 1320,
+                        "name": "",
+                        "nameFA": "استخراج كانه فلزی غیرآهن"
+                    },
+                    {
+                        "code": 1399,
+                        "name": "",
+                        "nameFA": "استخراج سایر كانه های فلزی"
+                    }
+                ],
+                "name": "Metallic Ores",
+                "nameFA": "استخراج کانه های فلزی"
+            },
+            {
+                "code": 14,
+                "industryIndex": "IRX6X14T0006",
+                "items": [
+                    {
+                        "code": 1410,
+                        "name": "",
+                        "nameFA": "استخراج سنگ، ماسه و خاك رس"
+                    },
+                    {
+                        "code": 1421,
+                        "name": "",
+                        "nameFA": "استخراج كانه های شیمیایی و كود"
+                    }
+                ],
+                "name": "Other Minerals",
+                "nameFA": "استخراج سایر معادن"
+            },
+            {
+                "code": 15,
+                "industryIndex": "IRX6X42T0006",
+                "items": [
+                    {
+                        "code": 1512,
+                        "name": "",
+                        "nameFA": "پردازش و نگهداری ماهی و محصولات مرتبط"
+                    },
+                    {
+                        "code": 1513,
+                        "name": "",
+                        "nameFA": "پردازش و نگهداری میوه و سبزی"
+                    },
+                    {
+                        "code": 1514,
+                        "name": "",
+                        "nameFA": "گروه تولید روغن های حیوانی و نباتی"
+                    },
+                    {
+                        "code": 1520,
+                        "name": "",
+                        "nameFA": "گروه تولید لبنیات"
+                    },
+                    {
+                        "code": 1531,
+                        "name": "",
+                        "nameFA": "گروه تولید حبوبات"
+                    },
+                    {
+                        "code": 1532,
+                        "name": "",
+                        "nameFA": "گروه تولید نشاسته و محصولات وابسته"
+                    },
+                    {
+                        "code": 1533,
+                        "name": "",
+                        "nameFA": "گروه تولید خوراك آماده دام"
+                    },
+                    {
+                        "code": 1541,
+                        "name": "",
+                        "nameFA": "گروه تولید نان و محصولات وابسته"
+                    },
+                    {
+                        "code": 1542,
+                        "name": "",
+                        "nameFA": "گروه تولید شكر"
+                    },
+                    {
+                        "code": 1543,
+                        "name": "",
+                        "nameFA": "گروه تولید كاكائو، شكلات و شیرینیجات"
+                    },
+                    {
+                        "code": 1549,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات  غذایی"
+                    },
+                    {
+                        "code": 1553,
+                        "name": "",
+                        "nameFA": "گروه تولید جو و مااشعیر"
+                    },
+                    {
+                        "code": 1554,
+                        "name": "",
+                        "nameFA": "تولید نوشابه و آب معدنی"
+                    }
+                ],
+                "name": "Foods ex. Sugar",
+                "nameFA": "محصولات غذایی و آشامیدنی به جز قند و شكر"
+            },
+            {
+                "code": 17,
+                "industryIndex": "IRX6X17T0006",
+                "items": [
+                    {
+                        "code": 1711,
+                        "name": "",
+                        "nameFA": "آماده سازی و ریسندگی نخ، پارچه بافی"
+                    },
+                    {
+                        "code": 1721,
+                        "name": "",
+                        "nameFA": "تولید محصولات نساجی به غیر از پوشاك"
+                    },
+                    {
+                        "code": 1722,
+                        "name": "",
+                        "nameFA": "تولید فرش و قالی"
+                    }
+                ],
+                "name": "Textile",
+                "nameFA": "منسوجات"
+            },
+            {
+                "code": 19,
+                "industryIndex": "IRX6X19T0006",
+                "items": [
+                    {
+                        "code": 1920,
+                        "name": "",
+                        "nameFA": "تولید كفش"
+                    },
+                    {
+                        "code": 1999,
+                        "name": "",
+                        "nameFA": "سایر محصولات چرمی"
+                    }
+                ],
+                "name": "Leather",
+                "nameFA": "دباغی، پرداخت چرم و ساخت انواع پاپوش"
+            },
+            {
+                "code": 20,
+                "industryIndex": "IRX6X20T0006",
+                "items": [
+                    {
+                        "code": 2021,
+                        "name": "",
+                        "nameFA": "تولید تخته چند لا و سایر تخته ها"
+                    },
+                    {
+                        "code": 2029,
+                        "name": "",
+                        "nameFA": "تولید دیگر محصولات چوبی"
+                    }
+                ],
+                "name": "wood",
+                "nameFA": "محصولات چوبی"
+            },
+            {
+                "code": 21,
+                "industryIndex": "IRX6X21T0006",
+                "items": [
+                    {
+                        "code": 2101,
+                        "name": "",
+                        "nameFA": "تولید خمیر كاغذ، كاغذ و مقوا"
+                    },
+                    {
+                        "code": 2102,
+                        "name": "",
+                        "nameFA": "تولید كاغذ و مقوای موجدار و محفظه آنها"
+                    },
+                    {
+                        "code": 2109,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات كاغذ و مقوا"
+                    }
+                ],
+                "name": "paper",
+                "nameFA": "محصولات کاغذی"
+            },
+            {
+                "code": 22,
+                "industryIndex": "IRX6X22T0006",
+                "items": [
+                    {
+                        "code": 2221,
+                        "name": "",
+                        "nameFA": "چاپ"
+                    }
+                ],
+                "name": "printing",
+                "nameFA": "انتشار، چاپ و تکثیر"
+            },
+            {
+                "code": 23,
+                "industryIndex": "IRX6X23T0006",
+                "items": [
+                    {
+                        "code": 2308,
+                        "name": "",
+                        "nameFA": "ساخت فرآورده های نفتی تصفیه شده"
+                    },
+                    {
+                        "code": 2320,
+                        "name": "",
+                        "nameFA": "تولید محصولات پالایش شده پتروشیمی"
+                    },
+                    {
+                        "code": 2399,
+                        "name": "",
+                        "nameFA": "سایر فراورده های نفتی و سوختی"
+                    }
+                ],
+                "name": "Petroleum Products",
+                "nameFA": "فراورده های نفتی، كك و سوخت هسته ای"
+            },
+            {
+                "code": 24,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 2411,
+                        "name": "",
+                        "nameFA": "مواد شیمیایی پایه به جز كود"
+                    },
+                    {
+                        "code": 2412,
+                        "name": "",
+                        "nameFA": "گروه تولید كود و تركیبات نیتروژن"
+                    },
+                    {
+                        "code": 2413,
+                        "name": "",
+                        "nameFA": "گروه تولید پلاستیك اولیه و لاستیك تركیبی"
+                    },
+                    {
+                        "code": 2421,
+                        "name": "",
+                        "nameFA": "حشره كش و سایر محصولات شیمیایی كشاورزی"
+                    },
+                    {
+                        "code": 2422,
+                        "name": "",
+                        "nameFA": "تولید رنگ، بتونه، جوهر و پوشش های مشابه"
+                    },
+                    {
+                        "code": 2423,
+                        "name": "",
+                        "nameFA": "گروه تولید داروهای شیمیایی و گیاهی"
+                    },
+                    {
+                        "code": 2424,
+                        "name": "",
+                        "nameFA": "گروه شوینده ها، عطر و محصولات آرایشی"
+                    },
+                    {
+                        "code": 2429,
+                        "name": "",
+                        "nameFA": "گروه تولید سایر محصولات شیمیایی"
+                    },
+                    {
+                        "code": 2430,
+                        "name": "",
+                        "nameFA": "گروه تولید نخهای مصنوعی"
+                    }
+                ],
+                "name": "",
+                "nameFA": ""
+            },
+            {
+                "code": 25,
+                "industryIndex": "IRX6X25T0006",
+                "items": [
+                    {
+                        "code": 2511,
+                        "name": "",
+                        "nameFA": "تولید تایر و بازسازی تایرهای لاستیكی"
+                    },
+                    {
+                        "code": 2519,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات لاستیكی"
+                    },
+                    {
+                        "code": 2520,
+                        "name": "",
+                        "nameFA": "تولید محصولات پلاستیكی"
+                    }
+                ],
+                "name": "Tire",
+                "nameFA": "لاستیك و پلاستیك"
+            },
+            {
+                "code": 26,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 2610,
+                        "name": "",
+                        "nameFA": "تولید قطعات و بردهای الكترونیكی"
+                    },
+                    {
+                        "code": 2620,
+                        "name": "",
+                        "nameFA": "تولید رایانه و تجهیزات جانبی"
+                    },
+                    {
+                        "code": 2691,
+                        "name": "",
+                        "nameFA": "گروه تولید سرامیك غیرساختمانی"
+                    },
+                    {
+                        "code": 2692,
+                        "name": "",
+                        "nameFA": "گروه تولید محصولات سرامیكی نسوز"
+                    },
+                    {
+                        "code": 2693,
+                        "name": "",
+                        "nameFA": "تولید گل و سرامیك  ساختمانی"
+                    },
+                    {
+                        "code": 2694,
+                        "name": "",
+                        "nameFA": "تولید سیمان ، آهك و گچ"
+                    },
+                    {
+                        "code": 2695,
+                        "name": "",
+                        "nameFA": "تولید محصولات بتنی ، سیمانی و گچی"
+                    },
+                    {
+                        "code": 2699,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات  معدنی غیرفلزی"
+                    }
+                ],
+                "name": "",
+                "nameFA": "تولید محصولات كامپیوتری الكترونیكی ونوری"
+            },
+            {
+                "code": 27,
+                "industryIndex": "IRX6X27T0006",
+                "items": [
+                    {
+                        "code": 2710,
+                        "name": "",
+                        "nameFA": "تولید آهن و فولاد پایه"
+                    },
+                    {
+                        "code": 2720,
+                        "name": "",
+                        "nameFA": "تولید فلزات گرانبهای غیرآهن"
+                    },
+                    {
+                        "code": 2731,
+                        "name": "",
+                        "nameFA": "ریخته گری آهن و فولاد"
+                    },
+                    {
+                        "code": 2799,
+                        "name": "",
+                        "nameFA": "استخراج سایر فلزات اساسی"
+                    }
+                ],
+                "name": "Steel & Basic Metals",
+                "nameFA": "فلزات اساسی"
+            },
+            {
+                "code": 28,
+                "industryIndex": "IRX6X28T0006",
+                "items": [
+                    {
+                        "code": 2811,
+                        "name": "",
+                        "nameFA": "تولید محصولات فلزی ساختمانی"
+                    },
+                    {
+                        "code": 2812,
+                        "name": "",
+                        "nameFA": "تولید مخزن و محفظه فلزات"
+                    },
+                    {
+                        "code": 2813,
+                        "name": "",
+                        "nameFA": "تولید مواد بخار به جز دیگهای بخار مركزی"
+                    },
+                    {
+                        "code": 2818,
+                        "name": "",
+                        "nameFA": "ساخت ابزارهای دستی پرقدرت"
+                    },
+                    {
+                        "code": 2893,
+                        "name": "",
+                        "nameFA": "تولید كارد و چنگال، ابزار دستی و عمومی"
+                    },
+                    {
+                        "code": 2899,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات فلزی ساخته شده"
+                    }
+                ],
+                "name": "Metallic Products",
+                "nameFA": "ساخت محصولات فلزی"
+            },
+            {
+                "code": 29,
+                "industryIndex": "IRX6X29T0006",
+                "items": [
+                    {
+                        "code": 2911,
+                        "name": "",
+                        "nameFA": "تولید موتور و توربین"
+                    },
+                    {
+                        "code": 2912,
+                        "name": "",
+                        "nameFA": "تولید پمپ، كمپرسور، مته و دریچه"
+                    },
+                    {
+                        "code": 2913,
+                        "name": "",
+                        "nameFA": "تولید یاتاقان، دنده و اجزای هدایتی"
+                    },
+                    {
+                        "code": 2914,
+                        "name": "",
+                        "nameFA": "تولید اجاق، كوره و مشعل كوره"
+                    },
+                    {
+                        "code": 2915,
+                        "name": "",
+                        "nameFA": "تولید تجهیزات بالابر و جابجایی"
+                    },
+                    {
+                        "code": 2919,
+                        "name": "",
+                        "nameFA": "تولید سایر ماشین آلات عمومی"
+                    },
+                    {
+                        "code": 2921,
+                        "name": "",
+                        "nameFA": "تولید ماشین آلات كشاورزی و باغبانی"
+                    },
+                    {
+                        "code": 2922,
+                        "name": "",
+                        "nameFA": "تولید ابزارهای ماشینی"
+                    },
+                    {
+                        "code": 2924,
+                        "name": "",
+                        "nameFA": "تولید ماشین آلات استخراج و  ساختمان"
+                    },
+                    {
+                        "code": 2926,
+                        "name": "",
+                        "nameFA": "تولید ماشین آلات نساجی و چرم سازی"
+                    },
+                    {
+                        "code": 2930,
+                        "name": "",
+                        "nameFA": "تولید وسایل خانگی"
+                    },
+                    {
+                        "code": 2999,
+                        "name": "",
+                        "nameFA": "زیر گروه سایر ماشین آلات و تجهیزات"
+                    }
+                ],
+                "name": "Machines",
+                "nameFA": "ماشین آلات و تجهیزات"
+            },
+            {
+                "code": 31,
+                "industryIndex": "IRX6X31T0006",
+                "items": [
+                    {
+                        "code": 3110,
+                        "name": "",
+                        "nameFA": "تولید موتورها، مولدها و مبدلهای الكتریكی"
+                    },
+                    {
+                        "code": 3120,
+                        "name": "",
+                        "nameFA": "تولید تجهیزات توزیع و كنترل برق"
+                    },
+                    {
+                        "code": 3130,
+                        "name": "",
+                        "nameFA": "تولید سیم و كابل عایق"
+                    },
+                    {
+                        "code": 3140,
+                        "name": "",
+                        "nameFA": "تولید انباره، پیل و باتری ساده"
+                    },
+                    {
+                        "code": 3150,
+                        "name": "",
+                        "nameFA": "تولید لامپ برقی و تجهیزات روشنایی"
+                    }
+                ],
+                "name": "Electrical Machines",
+                "nameFA": "ماشین آلات و دستگاه‌های برقی"
+            },
+            {
+                "code": 32,
+                "industryIndex": "IRX6X32T0006",
+                "items": [
+                    {
+                        "code": 3220,
+                        "name": "",
+                        "nameFA": "فرستنده رادیو، تلویزیون و تلفن و تلگراف"
+                    },
+                    {
+                        "code": 3230,
+                        "name": "",
+                        "nameFA": "گیرنده رادیو، تلویزیون و تجهیزات وابسته"
+                    }
+                ],
+                "name": "Communication",
+                "nameFA": "ساخت دستگاه‌ها و وسایل ارتباطی"
+            },
+            {
+                "code": 33,
+                "industryIndex": "IRX6X33T0006",
+                "items": [
+                    {
+                        "code": 3312,
+                        "name": "",
+                        "nameFA": "وسایل اندازه گیری غیر از كنترل صنعتی"
+                    }
+                ],
+                "name": "",
+                "nameFA": "ابزارپزشکی، اپتیکی و اندازه‌گیری"
+            },
+            {
+                "code": 34,
+                "industryIndex": "IRX6X31T0006",
+                "items": [
+                    {
+                        "code": 3410,
+                        "name": "",
+                        "nameFA": "تولید وسایل نقلیه موتوری"
+                    },
+                    {
+                        "code": 3420,
+                        "name": "",
+                        "nameFA": "ساخت بدنه وسایل نقلیه موتوری ساخت تریلر"
+                    },
+                    {
+                        "code": 3430,
+                        "name": "",
+                        "nameFA": "قطعات یدكی و جانبی وسایل نقلیه موتوری"
+                    },
+                    {
+                        "code": 3499,
+                        "name": "",
+                        "nameFA": "سایر قطعات یدكی و وسایل نقلیه موتوری"
+                    }
+                ],
+                "name": "Vehicle",
+                "nameFA": "خودرو و ساخت قطعات"
+            },
+            {
+                "code": 35,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 3511,
+                        "name": "",
+                        "nameFA": "ساخت و تعمیر كشتی"
+                    },
+                    {
+                        "code": 3591,
+                        "name": "",
+                        "nameFA": "تولید موتوسیكلت"
+                    }
+                ],
+                "name": "",
+                "nameFA": "سایر تجهیزات حمل و نقل"
+            },
+            {
+                "code": 36,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 3699,
+                        "name": "",
+                        "nameFA": "تولید سایر موارد"
+                    }
+                ],
+                "name": "",
+                "nameFA": "مبلمان و مصنوعات دیگر"
+            },
+            {
+                "code": 38,
+                "industryIndex": "IRX6X38T0006",
+                "items": [
+                    {
+                        "code": 3842,
+                        "name": "",
+                        "nameFA": "تولید شكر"
+                    }
+                ],
+                "name": "sugar",
+                "nameFA": "قند و شكر"
+            },
+            {
+                "code": 39,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 3999,
+                        "name": "",
+                        "nameFA": "شركتهای صنعتی چند رشته ای"
+                    }
+                ],
+                "name": "",
+                "nameFA": "شرکتهای چند رشته ای صنعتی"
+            },
+            {
+                "code": 40,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 4010,
+                        "name": "",
+                        "nameFA": "تولید انتقال و توزیع نیروی برق"
+                    },
+                    {
+                        "code": 4011,
+                        "name": "",
+                        "nameFA": "تولید،لنتقال و توزیع برق،گاز،بخاروآب گرم"
+                    },
+                    {
+                        "code": 4030,
+                        "name": "",
+                        "nameFA": "تامین بخار و آب گرم"
+                    }
+                ],
+                "name": "",
+                "nameFA": "عرضه برق، گاز، بخاروآب گرم"
+            },
+            {
+                "code": 41,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": "",
+                        "name": "",
+                        "nameFA": ""
+                    }
+                ],
+                "name": "",
+                "nameFA": "جمع آوری، تصفیه و توزیع آب"
+            },
+            {
+                "code": 42,
+                "industryIndex": "IRX6X42T0006",
+                "items": [
+                    {
+                        "code": 4212,
+                        "name": "",
+                        "nameFA": "پرورش و نگهداری ماهی و محصولات ماهی"
+                    },
+                    {
+                        "code": 4213,
+                        "name": "",
+                        "nameFA": "پرورش و نگهداری میوه جات و سبزیجات"
+                    },
+                    {
+                        "code": 4214,
+                        "name": "",
+                        "nameFA": "تولید روغن های حیوانی و نباتی"
+                    },
+                    {
+                        "code": 4220,
+                        "name": "",
+                        "nameFA": "تولید لبنیات"
+                    },
+                    {
+                        "code": 4231,
+                        "name": "",
+                        "nameFA": "تولید حبوبات"
+                    },
+                    {
+                        "code": 4232,
+                        "name": "",
+                        "nameFA": "تولید نشاسته و محصولات وابسته"
+                    },
+                    {
+                        "code": 4233,
+                        "name": "",
+                        "nameFA": "تولید خوراك آماده دام"
+                    },
+                    {
+                        "code": 4241,
+                        "name": "",
+                        "nameFA": "تولید نان و محصولات وابسته"
+                    },
+                    {
+                        "code": 4243,
+                        "name": "",
+                        "nameFA": "تولید كاكائو، شكلات و شیرینی جات"
+                    },
+                    {
+                        "code": 4249,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات غذایی"
+                    },
+                    {
+                        "code": 4249,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات غذایی"
+                    },
+                    {
+                        "code": 4253,
+                        "name": "",
+                        "nameFA": "تولید جو و ماءالشعیر"
+                    },
+                    {
+                        "code": 42534,
+                        "name": "",
+                        "nameFA": "تولید نوشیدنی و آبمیوه"
+                    },
+                    {
+                        "code": 4299,
+                        "name": "",
+                        "nameFA": "زیر گروه سایر محصولات غذایی"
+                    },
+                    {
+                        "code": 4299,
+                        "name": "",
+                        "nameFA": "زیر گروه سایر محصولات غذایی"
+                    }
+                ],
+                "name": "Foods ex. Sugar",
+                "nameFA": "محصولات غذایی و آشامیدنی به جز قند و شكر"
+            },
+            {
+                "code": 43,
+                "industryIndex": "IRX6X43T0006",
+                "items": [
+                    {
+                        "code": 4323,
+                        "name": "",
+                        "nameFA": "تولید داروهای شیمیایی و گیاهی"
+                    },
+                    {
+                        "code": 4399,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات دارویی"
+                    }
+                ],
+                "name": "Pharmaceuticals",
+                "nameFA": "مواد و محصولات دارویی"
+            },
+            {
+                "code": 44,
+                "industryIndex": "IRX6X44T0006",
+                "items": [
+                    {
+                        "code": 4411,
+                        "name": "",
+                        "nameFA": "تولید مواد شیمیایی پایه به جز كود"
+                    },
+                    {
+                        "code": 4412,
+                        "name": "",
+                        "nameFA": "تولید كود و تركیبات نیتروژن"
+                    },
+                    {
+                        "code": 4413,
+                        "name": "",
+                        "nameFA": "تولید پلاستیك اولیه و لاستیك تركیبی"
+                    },
+                    {
+                        "code": 4421,
+                        "name": "",
+                        "nameFA": "تولید حشره كش و سایر محصولات شیمیایی"
+                    },
+                    {
+                        "code": 4422,
+                        "name": "",
+                        "nameFA": "تولید رنگ، بتونه، جوهر"
+                    },
+                    {
+                        "code": 4424,
+                        "name": "",
+                        "nameFA": "تولید شوینده ها، عطر و محصولات آرایشی"
+                    },
+                    {
+                        "code": 4429,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات شیمیایی"
+                    },
+                    {
+                        "code": 4430,
+                        "name": "",
+                        "nameFA": "تولید نخ های مصنوعی"
+                    },
+                    {
+                        "code": 4499,
+                        "name": "",
+                        "nameFA": "تولید محصولات شیمیایی دیگر"
+                    }
+                ],
+                "name": "Chemicals",
+                "nameFA": "محصولات شیمیایی"
+            },
+            {
+                "code": 45,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 4520,
+                        "name": "",
+                        "nameFA": "ساختمان و مهندسی عمران"
+                    },
+                    {
+                        "code": 4521,
+                        "name": "",
+                        "nameFA": "پیمانكاری طرح های صنعتی"
+                    },
+                    {
+                        "code": 4522,
+                        "name": "",
+                        "nameFA": "مدیریت پسماند"
+                    },
+                    {
+                        "code": 4599,
+                        "name": "",
+                        "nameFA": "سایر فعالیت های پیمانكاری"
+                    }
+                ],
+                "name": "",
+                "nameFA": "پیمانكاری صنعتی"
+            },
+            {
+                "code": 46,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 4610,
+                        "name": "",
+                        "nameFA": "عمده فروشی براساس هزینه و یا قرارداد"
+                    },
+                    {
+                        "code": 4652,
+                        "name": "",
+                        "nameFA": "عمده فروشی تجهیزات وقطعات الكترونیكی"
+                    },
+                    {
+                        "code": 4690,
+                        "name": "",
+                        "nameFA": "تجارت عمده فروشی غیر تخصصی"
+                    }
+                ],
+                "name": "",
+                "nameFA": "تجارت عمده فروشی به جز وسایل نقلیه موتور"
+            },
+            {
+                "code": 47,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 4711,
+                        "name": "",
+                        "nameFA": "خرده فروشی انواع موادغذایی،نوشیدنی وغیره"
+                    },
+                    {
+                        "code": 4721,
+                        "name": "",
+                        "nameFA": "خرده فروشی موادغذایی در فروشگاههای تخصصی"
+                    }
+                ],
+                "name": "",
+                "nameFA": "خرده فروشی،باستثنای وسایل نقلیه موتوری"
+            },
+            {
+                "code": 49,
+                "industryIndex": "IRX6X49T0006",
+                "items": [
+                    {
+                        "code": 4993,
+                        "name": "",
+                        "nameFA": "تولید گل و سرامیك ساختمانی"
+                    }
+                ],
+                "name": "Tile",
+                "nameFA": "كاشی و سرامیك"
+            },
+            {
+                "code": 50,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 5010,
+                        "name": "",
+                        "nameFA": "فروش وسائط نقلیه"
+                    },
+                    {
+                        "code": 5030,
+                        "name": "",
+                        "nameFA": "فروش قطعات یدكی لوازم الحاقی وسایل نقلیه"
+                    }
+                ],
+                "name": "",
+                "nameFA": "تجارت عمده وخرده فروشی وسائط نقلیه موتور"
+            },
+            {
+                "code": 51,
+                "industryIndex": "IRX6X60T0006",
+                "items": [
+                    {
+                        "code": 5110,
+                        "name": "",
+                        "nameFA": "حمل و نقل هوایی مسافر"
+                    },
+                    {
+                        "code": 5111,
+                        "name": "",
+                        "nameFA": "حمل و نقل هوایی با برنامه زمانی"
+                    }
+                ],
+                "name": "Transportation",
+                "nameFA": "حمل و نقل هوایی"
+            },
+            {
+                "code": 52,
+                "industryIndex": "IRX6X60T0006",
+                "items": [
+                    {
+                        "code": 5222,
+                        "name": "",
+                        "nameFA": "فعالیتهای خدماتی وابسته به حمل و نقل آبی"
+                    },
+                    {
+                        "code": 5223,
+                        "name": "",
+                        "nameFA": "فعالیتهای خدماتی وابسته به حمل و نقل آبی"
+                    }
+                ],
+                "name": "Transportation",
+                "nameFA": "انبارداری و حمایت از فعالیتهای حمل و نقل"
+            },
+            {
+                "code": 53,
+                "industryIndex": "IRX6X53T0006",
+                "items": [
+                    {
+                        "code": 5394,
+                        "name": "",
+                        "nameFA": "تولید سیمان، آهك و گچ"
+                    },
+                    {
+                        "code": 5395,
+                        "name": "",
+                        "nameFA": "تولید بتون"
+                    }
+                ],
+                "name": "Cement",
+                "nameFA": "سیمان، آهك و گچ"
+            },
+            {
+                "code": 54,
+                "industryIndex": "IRX6X54T0006",
+                "items": [
+                    {
+                        "code": 5410,
+                        "name": "",
+                        "nameFA": "تولید شیشه"
+                    },
+                    {
+                        "code": 5491,
+                        "name": "",
+                        "nameFA": "تولید سرامیك غیرساختمانی"
+                    },
+                    {
+                        "code": 5492,
+                        "name": "",
+                        "nameFA": "تولید محصولات سرامیكی نسوز"
+                    },
+                    {
+                        "code": 5495,
+                        "name": "",
+                        "nameFA": "تولید محصولات بتنی، سیمانی و گچ"
+                    },
+                    {
+                        "code": 5499,
+                        "name": "",
+                        "nameFA": "تولید سایر محصولات معدنی غیرفلزی"
+                    }
+                ],
+                "name": "Other Non-Metallic Ore",
+                "nameFA": "سایر محصولات كانی غیرفلزی"
+            },
+            {
+                "code": 55,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 5510,
+                        "name": "",
+                        "nameFA": "هتل ها ، اردو و دیگر تداركات اقامت كوتاه"
+                    },
+                    {
+                        "code": 5511,
+                        "name": "",
+                        "nameFA": "كاربردهای تجاری اداری فرهنگی و گردشگری"
+                    }
+                ],
+                "name": "",
+                "nameFA": "هتل و رستوران"
+            },
+            {
+                "code": 56,
+                "industryIndex": "IRX6X56T0006",
+                "items": [
+                    {
+                        "code": 5699,
+                        "name": "",
+                        "nameFA": "سرمایه گذاریها"
+                    }
+                ],
+                "name": "Investment",
+                "nameFA": "سرمایه گذاریها"
+            },
+            {
+                "code": 57,
+                "industryIndex": "IRX6X57T0006",
+                "items": [
+                    {
+                        "code": 5719,
+                        "name": "",
+                        "nameFA": " سایر واسطه های پولی"
+                    },
+                    {
+                        "code": 5720,
+                        "name": "",
+                        "nameFA": "سایر واسطه های مالی"
+                    }
+                ],
+                "name": "Banks & Financial Intermediaries",
+                "nameFA": "بانكها و موسسات اعتباری"
+            },
+            {
+                "code": 58,
+                "industryIndex": "IRX6X58T0006",
+                "items": [
+                    {
+                        "code": 5891,
+                        "name": "",
+                        "nameFA": "لیزینگ مالی"
+                    }
+                ],
+                "name": "Leasing",
+                "nameFA": "سایر واسطه گریهای مالی"
+            },
+            {
+                "code": 59,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 5910,
+                        "name": "",
+                        "nameFA": "اوراق حق تقدم استفاده از تسهیلات مسكن"
+                    }
+                ],
+                "name": "",
+                "nameFA": "اوراق حق تقدم استفاده از تسهیلات مسكن"
+            },
+            {
+                "code": 60,
+                "industryIndex": "IRX6X60T0006",
+                "items": [
+                    {
+                        "code": 6003,
+                        "name": "",
+                        "nameFA": "خدمات حمل و نقل دریایی"
+                    },
+                    {
+                        "code": 6010,
+                        "name": "",
+                        "nameFA": "حمل و نقل از طریق خطوط راه آهن"
+                    },
+                    {
+                        "code": 6021,
+                        "name": "",
+                        "nameFA": "سایر حمل و نقلهای زمینی برنامه ریزی شده"
+                    },
+                    {
+                        "code": 6023,
+                        "name": "",
+                        "nameFA": "حمل و نقل بار زمینی"
+                    }
+                ],
+                "name": "Transportation",
+                "nameFA": "حمل ونقل، انبارداری و ارتباطات"
+            },
+            {
+                "code": 61,
+                "industryIndex": "IRX6X58T0006",
+                "items": [
+                    {
+                        "code": 6110,
+                        "name": "",
+                        "nameFA": "حمل و نقل دریایی وحمل ونقل درآبهای ساحلی"
+                    },
+                    {
+                        "code": 6120,
+                        "name": "",
+                        "nameFA": "سایر فعالیت های پشتیبانی و حمل و نقل"
+                    }
+                ],
+                "name": "marine transportation  ",
+                "nameFA": "حمل و نقل آبی"
+            },
+            {
+                "code": 63,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 6301,
+                        "name": "",
+                        "nameFA": "جابجایی محموله"
+                    }
+                ],
+                "name": "",
+                "nameFA": "فعالیت های پشتیبانی و كمكی حمل و نقل"
+            },
+            {
+                "code": 64,
+                "industryIndex": "IRX6X64T0006",
+                "items": [
+                    {
+                        "code": 6420,
+                        "name": "",
+                        "nameFA": "مخابرات"
+                    }
+                ],
+                "name": "Telecom",
+                "nameFA": "مخابرات"
+            },
+            {
+                "code": 65,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 6519,
+                        "name": "",
+                        "nameFA": "سایر واسطه های پولی"
+                    },
+                    {
+                        "code": 6591,
+                        "name": "",
+                        "nameFA": "لیزینگ مالی"
+                    },
+                    {
+                        "code": 6599,
+                        "name": "",
+                        "nameFA": "سایر واسطه های مالی"
+                    }
+                ],
+                "name": "",
+                "nameFA": "واسطه‌گری‌های مالی و پولی"
+            },
+            {
+                "code": 66,
+                "industryIndex": "IRX6X66T0006",
+                "items": [
+                    {
+                        "code": 6601,
+                        "name": "",
+                        "nameFA": "بیمه زندگی"
+                    },
+                    {
+                        "code": 6603,
+                        "name": "",
+                        "nameFA": "بیمه غیرزندگی"
+                    },
+                    {
+                        "code": 6611,
+                        "name": "",
+                        "nameFA": "فعالیتهای مالی و اجرائی"
+                    }
+                ],
+                "name": "Insurance",
+                "nameFA": "بیمه وصندوق بازنشستگی به جز تامین اجتماعی"
+            },
+            {
+                "code": 67,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 6711,
+                        "name": "",
+                        "nameFA": "اداره ی بازارهای مالی"
+                    },
+                    {
+                        "code": 6712,
+                        "name": "",
+                        "nameFA": "فعالیتهای مرتبط با اوراق بهادار"
+                    },
+                    {
+                        "code": 6719,
+                        "name": "",
+                        "nameFA": "بجز تامین وجوه بیمه و بازنشستگی"
+                    }
+                ],
+                "name": "",
+                "nameFA": "فعالیتهای كمكی به نهادهای مالی واسط"
+            },
+            {
+                "code": 68,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 6810,
+                        "name": "",
+                        "nameFA": "صندوق سرمایه گذاری مختلط"
+                    },
+                    {
+                        "code": 6811,
+                        "name": "",
+                        "nameFA": "صندوق سرمایه گذاری در سهام"
+                    },
+                    {
+                        "code": 6812,
+                        "name": "",
+                        "nameFA": "صندوق سرمایه گذاری در اوراق با درآمدثابت"
+                    },
+                    {
+                        "code": 6813,
+                        "name": "",
+                        "nameFA": "صندوق های زمین و ساختمان"
+                    },
+                    {
+                        "code": 6814,
+                        "name": "",
+                        "nameFA": "صندوق های پروژه"
+                    },
+                    {
+                        "code": 6815,
+                        "name": "",
+                        "nameFA": "صندوق سرمایه گذاری جسورانه"
+                    }
+                ],
+                "name": "",
+                "nameFA": "صندوق سرمایه گذاری قابل معامله"
+            },
+            {
+                "code": 69,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 6910,
+                        "name": "",
+                        "nameFA": "صكوك اجاره"
+                    },
+                    {
+                        "code": 6911,
+                        "name": "",
+                        "nameFA": "صكوك مرابحه"
+                    },
+                    {
+                        "code": 6912,
+                        "name": "",
+                        "nameFA": "صكوك استصناع"
+                    },
+                    {
+                        "code": 6913,
+                        "name": "",
+                        "nameFA": "اوراق رهنی"
+                    },
+                    {
+                        "code": 6914,
+                        "name": "",
+                        "nameFA": "صكوك تجاری اسلامی"
+                    },
+                    {
+                        "code": 6920,
+                        "name": "",
+                        "nameFA": "اوارق مشاركت دولتی"
+                    },
+                    {
+                        "code": 6921,
+                        "name": "",
+                        "nameFA": "اوراق مشاركت شهرداری ها"
+                    },
+                    {
+                        "code": 6922,
+                        "name": "",
+                        "nameFA": "اوراق مشاركت بانك مركزی"
+                    },
+                    {
+                        "code": 6923,
+                        "name": "",
+                        "nameFA": "اوراق مشاركت بخش خصوصی"
+                    },
+                    {
+                        "code": 6924,
+                        "name": "",
+                        "nameFA": "اوراق مشاركت دولتی بدون ضمانت دولت"
+                    },
+                    {
+                        "code": 6925,
+                        "name": "",
+                        "nameFA": "اوراق مشاركت منتشره بانكها"
+                    },
+                    {
+                        "code": 6930,
+                        "name": "",
+                        "nameFA": "گواهی سپرده عام"
+                    },
+                    {
+                        "code": 6931,
+                        "name": "",
+                        "nameFA": "گواهی سپرده خاص"
+                    },
+                    {
+                        "code": 6940,
+                        "name": "",
+                        "nameFA": "اسناد خزانه اسلامی"
+                    },
+                    {
+                        "code": 6941,
+                        "name": "",
+                        "nameFA": "اوراق تسویه خزانه"
+                    },
+                    {
+                        "code": 6942,
+                        "name": "",
+                        "nameFA": "اوراق اجاره دولتی با ضمانت دولت"
+                    },
+                    {
+                        "code": 6943,
+                        "name": "",
+                        "nameFA": "اوراق اجاره دولتی بدون ضمانت دولت"
+                    },
+                    {
+                        "code": 6944,
+                        "name": "",
+                        "nameFA": "اسناد خزانه اسلامی كوتاه مدت"
+                    },
+                    {
+                        "code": 6945,
+                        "name": "",
+                        "nameFA": "اوراق مرابحه دولتی با ضمانت دولت"
+                    },
+                    {
+                        "code": 6946,
+                        "name": "",
+                        "nameFA": "اوراق منفعت دولتی با ضمانت دولت"
+                    }
+                ],
+                "name": "",
+                "nameFA": "اوراق تامین مالی"
+            },
+            {
+                "code": 70,
+                "industryIndex": "IRX6X70T0006",
+                "items": [
+                    {
+                        "code": 7010,
+                        "name": "",
+                        "nameFA": "املاك و مستغلات با ملك خود یا لیزینگ شده"
+                    },
+                    {
+                        "code": 7021,
+                        "name": "",
+                        "nameFA": "پیمانكاری املاك و مستغلات"
+                    },
+                    {
+                        "code": 7099,
+                        "name": "",
+                        "nameFA": "سایر فعالیت های املاك و مستغلات"
+                    }
+                ],
+                "name": "Construction",
+                "nameFA": "انبوه سازی، املاك و مستغلات"
+            },
+            {
+                "code": 71,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 7120,
+                        "name": "",
+                        "nameFA": "تجزیه و تحلیل و آزمایش فنی"
+                    }
+                ],
+                "name": "",
+                "nameFA": "فعالیت مهندسی، تجزیه، تحلیل و آزمایش فنی"
+            },
+            {
+                "code": 72,
+                "industryIndex": "IRX6X72T0006",
+                "items": [
+                    {
+                        "code": 7200,
+                        "name": "",
+                        "nameFA": "سایر فعالیت های رایانه ای"
+                    },
+                    {
+                        "code": 7220,
+                        "name": "",
+                        "nameFA": "مشاوره و تهیه نرم افزار"
+                    }
+                ],
+                "name": "IT",
+                "nameFA": "رایانه و فعالیت‌های وابسته به آن"
+            },
+            {
+                "code": 73,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 7310,
+                        "name": "",
+                        "nameFA": "خدمات ارزش افزوده"
+                    }
+                ],
+                "name": "",
+                "nameFA": "اطلاعات و ارتباطات"
+            },
+            {
+                "code": 74,
+                "industryIndex": "IRX6X74T0006",
+                "items": [
+                    {
+                        "code": 7421,
+                        "name": "",
+                        "nameFA": "فعالیتهای ساختمانی و مشاوره فنی مرتبط"
+                    },
+                    {
+                        "code": 7422,
+                        "name": "",
+                        "nameFA": "آزمایش و تحلیل فنی"
+                    },
+                    {
+                        "code": 7490,
+                        "name": "",
+                        "nameFA": "سایر فعالیتهای حرفه ای علمی و فنی"
+                    }
+                ],
+                "name": "Engineering",
+                "nameFA": "خدمات فنی و مهندسی"
+            },
+            {
+                "code": 76,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 7610,
+                        "name": "",
+                        "nameFA": "اوراق بهادارشركت س.خ مبتنی بردارایی فكری"
+                    },
+                    {
+                        "code": 7611,
+                        "name": "",
+                        "nameFA": "اوراق بهادار مبتنی بر دارایی فكری"
+                    },
+                    {
+                        "code": 7612,
+                        "name": "",
+                        "nameFA": "حق بهره برداری اوراق مبتنی بردارایی فكری"
+                    }
+                ],
+                "name": "",
+                "nameFA": "اوراق بهادار مبتنی بر دارایی فكری"
+            },
+            {
+                "code": 77,
+                "industryIndex": "IRX6X72T0006",
+                "items": [
+                    {
+                        "code": 7710,
+                        "name": "",
+                        "nameFA": "اجاره و لیزینگ وسائط نقلیه موتوری"
+                    }
+                ],
+                "name": "",
+                "nameFA": "فعالبت های اجاره و لیزینگ"
+            },
+            {
+                "code": 82,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 8299,
+                        "name": "",
+                        "nameFA": "فعالیت حمایت از مشاغل دیگر"
+                    }
+                ],
+                "name": "",
+                "nameFA": "فعالیت پشتیبانی اجرائی اداری وحمایت كسب"
+            },
+            {
+                "code": 90,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 9000,
+                        "name": "",
+                        "nameFA": "فعالیت های هنری"
+                    }
+                ],
+                "name": "",
+                "nameFA": "فعالیت های هنری"
+            },
+            {
+                "code": 93,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 9301,
+                        "name": "",
+                        "nameFA": "فعالیتهای ورزشی"
+                    }
+                ],
+                "name": "",
+                "nameFA": "فعالیتهای ورزشی"
+            },
+            {
+                "code": 98,
+                "industryIndex": "",
+                "items": [
+                    {
+                        "code": 9899,
+                        "name": "",
+                        "nameFA": "اوراق غیرفعال"
+                    }
+                ],
+                "name": "",
+                "nameFA": "اوراق غیرفعال"
+            }
+        ]
+    }
+}
